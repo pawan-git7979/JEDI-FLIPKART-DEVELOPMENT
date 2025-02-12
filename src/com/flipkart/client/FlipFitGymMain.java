@@ -56,8 +56,9 @@ public class FlipFitGymMain {
 
     private static String getStringInput(String message) {
         System.out.print(message);
-//        scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+//        return scanner.next();
     }
 
     private static void login() {

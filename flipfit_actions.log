@@ -2,3 +2,11 @@ User logged in -> username: a, role:
 User logged in -> username: a, role: 
 User logged in -> username: , role: f
 User logged in -> username: , role: gym owner
+User logged in -> username: a, role: gym customer
+User logged in -> username: Abc, role: gym
+User logged in -> username: abc, role: gym admin
+Gym Admin [abc] logged out.
+User logged in -> username: ads, role: gym admin
+Gym Admin [ads] logged out.
+User logged in -> username: adsas, role: gym owner
+Gym Owner [adsas] logged out.
