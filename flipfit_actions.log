@@ -10,3 +10,5 @@ User logged in -> username: ads, role: gym admin
 Gym Admin [ads] logged out.
 User logged in -> username: adsas, role: gym owner
 Gym Owner [adsas] logged out.
+User logged in -> username: a, role: gym owner
+Gym Owner [a] logged out.
