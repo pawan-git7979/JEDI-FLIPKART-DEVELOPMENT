@@ -1,5 +1,4 @@
 package com.flipkart.constant;
 
-public class Constants {
-
+public class MembershipStatus {
 }
