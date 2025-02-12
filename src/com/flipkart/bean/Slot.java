@@ -1,5 +1,5 @@
 package com.flipkart.bean;
-
+//slots 
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -8,6 +8,7 @@ public class Slot {
     private String date;           
     private String timeRange;     
     private int availableSeats;
+    
       private Queue<Integer> waitingList = new LinkedList<>();
 
     public Slot() {}
@@ -18,6 +19,8 @@ public class Slot {
         this.availableSeats = availableSeats;
         this.waitingList = waitingList;
     }
+    
+    
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
