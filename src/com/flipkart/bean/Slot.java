@@ -1,39 +1,90 @@
+
+/**
+ *
+ */
 package com.flipkart.bean;
-//slots 
-import java.util.LinkedList;
-import java.util.Queue;
 
+/**
+ *
+ */
 public class Slot {
-    private int id;
-    private String date;           
-    private String timeRange;     
-    private int availableSeats;
-    
-      private Queue<Integer> waitingList = new LinkedList<>();
+    private String slotId;
+    private String gymId;
+    private String startTime;
+    private String endTime;
+    private String trainer;
+    private int numOfSeats;
+    private int numOfSeatsBooked;
 
-    public Slot() {}
-    public Slot(int id, String date, String timeRange, int availableSeats, Queue<Integer> waitingList) {
-        this.id = id;
-        this.date = date;
-        this.timeRange = timeRange;
-        this.availableSeats = availableSeats;
-        this.waitingList = waitingList;
+    public Slot()
+    {
+
     }
-    
-    
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public Slot(String slotId,String startTime,String endTime,int numOfSeats,String trainer,String gymId)
+    {
+        this.slotId=slotId;
+        this.startTime=startTime;
+        this.endTime=endTime;
+        this.numOfSeats=numOfSeats;
+        this.trainer=trainer;
+        this.gymId=gymId;
+        this.numOfSeatsBooked=0;
+    }
+    public String getSlotId() {
+        return slotId;
+    }
 
-    public String getDate() { return date; }
-    public void setDate(String date) { this.date = date; }
+    public void setSlotId(String slotId) {
+        this.slotId = slotId;
+    }
 
-    public String getTimeRange() { return timeRange; }
-    public void setTimeRange(String timeRange) { this.timeRange = timeRange; }
+    public String getStartTime() {
+        return startTime;
+    }
 
-    public int getAvailableSeats() { return availableSeats; }
-    public void setAvailableSeats(int availableSeats) { this.availableSeats = availableSeats; }
+    public void setNumOfSeatsBooked(int numOfSeatsBooked)
+    {
+        this.numOfSeatsBooked=numOfSeatsBooked;
+    }
 
-    public Queue<Integer> getWaitingList() { return waitingList; }
-    public void setWaitingList(Queue<Integer> waitingList) { this.waitingList = waitingList; }
+    public int getNumOfSeatsBooked()
+    {
+        return numOfSeatsBooked;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public int getNumOfSeats() {
+        return numOfSeats;
+    }
+
+    public void setNumOfSeats(int numOfSeats) {
+        this.numOfSeats = numOfSeats;
+    }
+
+    public String getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(String trainer) {
+        this.trainer = trainer;
+    }
+    public String getGymId() {
+        return gymId;
+    }
+
+    public void setGymId(String gymId) {
+        this.gymId = gymId;
+    }
 }
