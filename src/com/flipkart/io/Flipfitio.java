@@ -151,7 +151,8 @@ public class Flipfitio {
             System.out.println("1. Add a Gym Center");
             System.out.println("2. Update Gym Info");
             System.out.println("3. Add/Update Slots");
-            System.out.println("4. Logout");
+            System.out.println("4. View Payment Transactions");
+            System.out.println("5. Logout");
             choice = getIntInput("Enter your choice: ");
             switch (choice) {
                 case 1:
@@ -162,8 +163,10 @@ public class Flipfitio {
                     break;
                 case 3:
                     System.out.println("Adding or updating slots...");
-                    break;
                 case 4:
+                	System.out.println("Transaction are ...");
+                    break;
+                case 5:
                     System.out.println("Logging out...");
                     break;
                 default:

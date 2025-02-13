@@ -1,0 +1,10 @@
+User logged in -> username: pawan, role: gyn owner
+User logged in -> username: pawan, role: gym owner
+User logged in -> username: pawan, role: gym owner
+Gym Owner [pawan] logged out.
+User logged in -> username: pawan, role: gym owner
+Gym Owner [pawan] logged out.
+User logged in -> username: pawan, role: gym owner
+Gym Owner [pawan] logged out.
+User logged in -> username: pawan, role: gym owner
+Gym Owner [pawan] logged out.
