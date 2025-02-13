@@ -1,0 +1,37 @@
+# Ignore compiled class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore Maven target directory
+target/
+bin/
+out/
+
+# Ignore IDE-specific files (Eclipse, STS, IntelliJ, VS Code)
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# Ignore logs and temporary files
+logs/
+*.log
+hs_err_pid*
+*.tmp
+*.swp
+
+# Ignore dependency directories
+.m2/
+.gradle/
+node_modules/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files (if using dotenv)
+.env
