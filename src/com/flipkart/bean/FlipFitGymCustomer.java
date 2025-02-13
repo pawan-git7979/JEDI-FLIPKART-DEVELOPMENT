@@ -1,4 +1,4 @@
-package com.flipkart.beans;
+package com.flipkart.bean;
 
 import java.util.List;
 
