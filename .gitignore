@@ -1,37 +1,39 @@
-# Ignore compiled class files
+# Ignore compiled Java class files
 *.class
 *.jar
 *.war
 *.ear
 
-# Ignore Maven target directory
-target/
+# Ignore build directories
 bin/
+target/
 out/
 
-# Ignore IDE-specific files (Eclipse, STS, IntelliJ, VS Code)
+# Ignore IntelliJ IDEA and Eclipse (STS) files
+*.iml
+*.ipr
+*.iws
+.idea/
+.metadata/
 .classpath
 .project
 .settings/
-.idea/
-*.iml
-.vscode/
 
 # Ignore logs and temporary files
+flipfit_actions.log
 logs/
 *.log
-hs_err_pid*
 *.tmp
 *.swp
 
-# Ignore dependency directories
+# Ignore dependency and build system files
 .m2/
 .gradle/
 node_modules/
 
-# Ignore OS-specific files
+# Ignore OS-generated files
 .DS_Store
 Thumbs.db
 
-# Ignore environment files (if using dotenv)
-.env
+# Ignore UML Artifacts (optional, if you don’t want them in Git)
+JEDI-FlipFit-UML-Artifacts/
