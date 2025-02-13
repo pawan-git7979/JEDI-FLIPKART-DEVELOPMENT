@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="aadsad">
-      <change afterPath="$PROJECT_DIR$/bin/com/flipkart/io/Flipfitio.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/DAO/BookingDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/DAO/GymDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/DAO/MembershipDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/DAO/PaymentDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/DAO/SlotDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/bean/Booking.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/bean/GymAdmin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/bean/GymCenter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/bean/GymCustomer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/bean/GymOwner.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/bean/Slot.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/BookingService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/GymService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/PaymentService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/business/SlotService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/client/AdminClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/client/CustomerClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/client/GymOwnerClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/client/UserClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/constant/BookingStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/constant/MembershipStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/constant/PaymentStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/constant/UserRoles.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/datasource/DataSeeder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/datasource/HibernateUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/exception/BookingNotFoundException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/exception/GymNotFoundException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/exception/PaymentFailureException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/exception/SlotNotAvailableException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/helper/LoggerHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/helper/PaymentGatewayHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/helper/ValidationHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/io/Flipfitio.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/io/Flipfitio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/utils/DateUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/utils/JsonUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/utils/StringUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/BookingDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/DAO/BookingDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/GymDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/DAO/GymDao.class" afterDir="false" />
@@ -62,11 +25,11 @@
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/PaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/PaymentService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/SlotService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/SlotService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/AdminClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/AdminClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/CustomerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/CustomerClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitGymMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitGymMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/GymOwnerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/GymOwnerClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/UserClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/UserClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/AdminClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/CustomerClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitGymMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/GymOwnerClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/UserClient.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/constant/BookingStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/constant/BookingStatus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/constant/MembershipStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/constant/MembershipStatus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/constant/PaymentStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/constant/PaymentStatus.class" afterDir="false" />
@@ -79,7 +42,6 @@
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/PaymentFailureException.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/exception/PaymentFailureException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/SlotNotAvailableException.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/exception/SlotNotAvailableException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/UserNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/exception/UserNotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/helper/DBConnectionHelper.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/helper/LoggerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/helper/LoggerHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/helper/PaymentGatewayHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/helper/PaymentGatewayHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/helper/ValidationHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/helper/ValidationHelper.class" afterDir="false" />
@@ -87,10 +49,16 @@
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/DateUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/DateUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/JsonUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/JsonUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/StringUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/StringUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/AdminClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/AdminClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/CustomerClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/CustomerClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/GymOwnerClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/GymOwnerClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/UserClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/UserClient.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,13 +105,14 @@
   "keyToString": {
     "Application.FlipFitGymMain.executor": "Run",
     "Application.Flipfitio.executor": "Run",
+    "Application.MainMenu.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "clientside",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Flipfitio">
+  <component name="RunManager" selected="Application.MainMenu">
     <configuration name="FlipFitGymMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flipkart.client.FlipFitGymMain" />
       <module name="JEDI-FLIPKART-DEVELOPMENT" />
@@ -170,8 +139,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flipkart.client.MainMenu" />
+      <module name="JEDI-FLIPKART-DEVELOPMENT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flipkart.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.Flipfitio" />
         <item itemvalue="Application.FlipFitGymMain" />
       </list>
