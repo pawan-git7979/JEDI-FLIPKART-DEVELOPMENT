@@ -1,89 +1,43 @@
-/**
- *
- */
-package com.flipkart.bean;
+package com.flipkart.beans;
 
-/**
- *
- */
+import java.util.Queue;
+
 public class Slot {
     private String slotId;
-    private String gymId;
+    private String date;
     private String startTime;
     private String endTime;
-    private String trainer;
-    private int numOfSeats;
-    private int numOfSeatsBooked;
+    private int availableSeats;
+    private Queue<String> waitingBookingIds;
 
-    public Slot()
-    {
-
-    }
-
-    public Slot(String slotId,String startTime,String endTime,int numOfSeats,String trainer,String gymId)
-    {
-        this.slotId=slotId;
-        this.startTime=startTime;
-        this.endTime=endTime;
-        this.numOfSeats=numOfSeats;
-        this.trainer=trainer;
-        this.gymId=gymId;
-        this.numOfSeatsBooked=0;
-    }
-    public String getSlotId() {
-        return slotId;
-    }
-
-    public void setSlotId(String slotId) {
+    public Slot(String slotId, String date, String startTime, String endTime, int availableSeats, Queue<String> waitingBookingIds) {
         this.slotId = slotId;
-    }
-
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setNumOfSeatsBooked(int numOfSeatsBooked)
-    {
-        this.numOfSeatsBooked=numOfSeatsBooked;
-    }
-
-    public int getNumOfSeatsBooked()
-    {
-        return numOfSeatsBooked;
-    }
-
-    public void setStartTime(String startTime) {
+        this.date = date;
         this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
         this.endTime = endTime;
+        this.availableSeats = availableSeats;
+        this.waitingBookingIds = waitingBookingIds;
     }
 
-    public int getNumOfSeats() {
-        return numOfSeats;
+    public void getTransactionDetail() {
+        // Logic for transaction details
     }
 
-    public void setNumOfSeats(int numOfSeats) {
-        this.numOfSeats = numOfSeats;
+    public void setTransactionDetail() {
+        // Logic to set transaction details
     }
 
-    public String getTrainer() {
-        return trainer;
+    public void setWaitlist() {
+        // Logic to set waitlist
     }
 
-    public void setTrainer(String trainer) {
-        this.trainer = trainer;
-    }
-    public String getGymId() {
-        return gymId;
+    public void getWaitlist() {
+        // Logic to get waitlist
     }
 
-    public void setGymId(String gymId) {
-        this.gymId = gymId;
+    public void updateWaitlist() {
+        // Logic to update waitlist
     }
+
+    // Getters and Setters
 }

@@ -1,30 +1,25 @@
-package com.flipkart.bean;
+package com.flipkart.beans;
 
 import java.util.List;
 
 public class GymCenter {
-    private int id;
+    private String id;
     private String name;
-    private String location;    
-    private List<Integer> slots; // List of Slot IDs (or actual Slot objects)
+    private String location;
+    private String adminId;
+    private List<String> slotIds;
 
-    public GymCenter() {}
-    public GymCenter(int id, String name, String location, int adminId, List<Integer> slots) {
+    public GymCenter(String id, String name, String location, String adminId, List<String> slotIds) {
         this.id = id;
         this.name = name;
         this.location = location;
-        this.slots = slots;
+        this.adminId = adminId;
+        this.slotIds = slotIds;
     }
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public void getGymDetails() {
+        // Logic to fetch gym details
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-
-    public List<Integer> getSlots() { return slots; }
-    public void setSlots(List<Integer> slots) { this.slots = slots; }
+    // Getters and Setters
 }
