@@ -4,21 +4,27 @@ public class LoginIO {
     public static void login() {
         System.out.println("\n=== Login ===");
         String username = IOUtils.getStringInput("Enter username: ");
-        String password = IOUtils.getStringInput("Enter password: ");
-        String role = IOUtils.getStringInput("Enter role (gym customer / gym owner / gym admin): ");
+        String password = IOUtils.getStringInput("Enter password: "); // Consider handling password securely
 
-        switch (role.toLowerCase()) {
-            case "gym customer":
+        System.out.println("Select role:");
+        System.out.println("1. Gym Customer");
+        System.out.println("2. Gym Owner");
+        System.out.println("3. Gym Admin");
+
+        int roleChoice = IOUtils.getIntInput("Enter role number (1-3): ");
+
+        switch (roleChoice) {
+            case 1:
                 GymCustomerMenu.showMenu(username);
                 break;
-            case "gym owner":
+            case 2:
                 GymOwnerMenu.showMenu(username);
                 break;
-            case "gym admin":
+            case 3:
                 GymAdminMenu.showMenu(username);
                 break;
             default:
-                System.out.println("Unrecognized role, returning to main menu.");
+                System.out.println("Invalid role choice, returning to main menu.");
                 break;
         }
     }
