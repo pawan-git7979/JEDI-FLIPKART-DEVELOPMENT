@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="aadsad">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/GymAdminMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/GymAdminMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/GymAdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/GymAdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/PaymentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/DAO/FlipFitPaymentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/FlipFitMembershipStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/FlipFitMembershipStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/PaymentStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/constant/FlipFitPaymentStatus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="clientside" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -51,20 +56,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.FlipFitGymMain.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Flipfitio.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainMenu.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;clientside&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FlipFitGymMain.executor": "Run",
+    "Application.Flipfitio.executor": "Run",
+    "Application.MainMenu.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.MainMenu">
+}]]></component>
+  <component name="RunManager" selected="Application.FlipFitMainMenu">
     <configuration name="FlipFitGymMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flipkart.client.FlipFitGymMain" />
+      <module name="JEDI-FLIPKART-DEVELOPMENT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flipkart.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlipFitMainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flipkart.client.FlipFitMainMenu" />
       <module name="JEDI-FLIPKART-DEVELOPMENT" />
       <extension name="coverage">
         <pattern>
@@ -104,6 +122,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FlipFitMainMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.Flipfitio" />
         <item itemvalue="Application.FlipFitGymMain" />
