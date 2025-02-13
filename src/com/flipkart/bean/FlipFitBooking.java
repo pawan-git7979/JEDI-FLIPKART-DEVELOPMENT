@@ -1,6 +1,6 @@
 package com.flipkart.bean;
 
-public class Booking {
+public class FlipFitBooking {
     private int id;
     private int userId;
     private int centerId;
@@ -8,8 +8,8 @@ public class Booking {
     private String status;   // Could be an enum (BOOKED, WAITLISTED, CANCELLED, etc.)
     private int paymentId;
 
-    public Booking() {}
-    public Booking(int id, int userId, int centerId, int slotId, String status, int paymentId) {
+    public FlipFitBooking() {}
+    public FlipFitBooking(int id, int userId, int centerId, int slotId, String status, int paymentId) {
         this.id = id;
         this.userId = userId;
         this.centerId = centerId;
