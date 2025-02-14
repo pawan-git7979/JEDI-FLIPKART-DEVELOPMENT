@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="" />
+    <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-FLIPKART-DEVELOPMENT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-FLIPKART-DEVELOPMENT.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/DataBaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/DataBaseConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/DateUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/JsonUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DataBaseConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DataBaseConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DateUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DateUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/JsonUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/JsonUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/StringUtils.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,13 +49,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.FlipFitApplicationMenu.executor": "Run",
+    "Application.TestDBConnection.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "predb",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TestDBConnection">
     <configuration name="FlipFitApplicationMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flipkart.client.FlipFitApplicationMenu" />
       <module name="JEDI-FLIPKART-DEVELOPMENT" />
@@ -54,8 +73,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestDBConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flipkart.utils.TestDBConnection" />
+      <module name="JEDI-FLIPKART-DEVELOPMENT" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flipkart.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestDBConnection" />
         <item itemvalue="Application.FlipFitApplicationMenu" />
       </list>
     </recent_temporary>
