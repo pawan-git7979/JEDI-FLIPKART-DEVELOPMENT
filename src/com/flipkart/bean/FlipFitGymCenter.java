@@ -6,16 +6,20 @@ public class FlipFitGymCenter {
     private int id;
     private String name;
     private String location;
-    private int adminId;  // or ownerId if you prefer
-    private List<FlipFitGymSlot> slots; // Now holds slot objects
+    private int adminId;
+    private int ownerId;      // Added Gym Owner ID
+    private String ownerName; // Added Gym Owner Name
+    private List<FlipFitGymSlot> slots;
 
     public FlipFitGymCenter() {}
 
-    public FlipFitGymCenter(int id, String name, String location, int adminId, List<FlipFitGymSlot> slots) {
+    public FlipFitGymCenter(int id, String name, String location, int adminId, int ownerId, String ownerName, List<FlipFitGymSlot> slots) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.adminId = adminId;
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
         this.slots = slots;
     }
 
@@ -31,6 +35,25 @@ public class FlipFitGymCenter {
     public int getAdminId() { return adminId; }
     public void setAdminId(int adminId) { this.adminId = adminId; }
 
+    public int getOwnerId() { return ownerId; }
+    public void setOwnerId(int ownerId) { this.ownerId = ownerId; }
+
+    public String getOwnerName() { return ownerName; }
+    public void setOwnerName(String ownerName) { this.ownerName = ownerName; }
+
     public List<FlipFitGymSlot> getSlots() { return slots; }
     public void setSlots(List<FlipFitGymSlot> slots) { this.slots = slots; }
+
+    @Override
+    public String toString() {
+        return "FlipFitGymCenter{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", adminId=" + adminId +
+                ", ownerId=" + ownerId +
+                ", ownerName='" + ownerName + '\'' +
+                ", slots=" + slots +
+                '}';
+    }
 }

@@ -3,15 +3,29 @@ package com.flipkart.bean;
 import java.util.List;
 
 public class FlipFitGymCustomer extends FlipFitUser {
-    private List<Integer> bookings; // List of booking IDs
+    private List<Integer> bookingSlotIds;
+    private String governmentDocumentNumber;
 
-    public FlipFitGymCustomer() {}
+    // Default Constructor
 
-    public FlipFitGymCustomer(int userId, String name, String email, String password, String membershipType) {
-        super(userId, name, email, password, "GymCustomer");
-        // membershipType is not stored here, but you could store it if you want
+    // Parameterized Constructor
+    public FlipFitGymCustomer(int userId, String name, String email, String password, String address,
+                              String governmentDocumentNumber) {
+        super(userId, name, email, password, "GymCustomer", address);
+        this.governmentDocumentNumber = governmentDocumentNumber;
     }
 
-    public List<Integer> getBookings() { return bookings; }
-    public void setBookings(List<Integer> bookings) { this.bookings = bookings; }
+    // Getters and Setters
+    public List<Integer> getBookingSlotIds() { return bookingSlotIds; }
+    public void setBookingSlotIds(List<Integer> bookingSlotIds) { this.bookingSlotIds = bookingSlotIds; }
+
+    public String getGovernmentDocumentNumber() { return governmentDocumentNumber; }
+    public void setGovernmentDocumentNumber(String governmentDocumentNumber) { this.governmentDocumentNumber = governmentDocumentNumber; }
+
+    @Override
+    public String toString() {
+        return "FlipFitGymCustomer { " + super.toString() +
+                ", bookingSlotIds=" + bookingSlotIds +
+                ", governmentDocumentNumber='" + governmentDocumentNumber + "' }";
+    }
 }

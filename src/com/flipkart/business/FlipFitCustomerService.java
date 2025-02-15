@@ -1,48 +1,106 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.FlipFitGymCustomer;
-import com.flipkart.bean.FlipFitGymSlot;
+import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerImpl;
+import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerInterface;
+import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.FlipFitPayment;
+import com.flipkart.bean.FlipFitNotification;
+import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitGymSlot;
 import java.util.List;
+import java.util.Scanner;
 
-public class FlipFitCustomerService implements FlipFitCustomerServiceInterface {
+public class FlipFitCustomerService {
+    private FlipFitCustomerInterface customerDAO = new FlipFitCustomerImpl();
+    private FlipFitPaymentService paymentService = new FlipFitPaymentService();
 
-    private List<FlipFitGymCenter> centers;
-
-    public FlipFitCustomerService(List<FlipFitGymCenter> centers) {
-        this.centers = centers;
-    }
-
-    @Override
-    public void viewAvailableCenters(String city) {
-        System.out.println("Available Gym Centers in " + city + ":");
-        boolean foundAny = false;
-        for (FlipFitGymCenter center : centers) {
-            if (center.getLocation().equalsIgnoreCase(city)) {
-                System.out.println("Center ID: " + center.getId() + " | Name: " + center.getName());
-                foundAny = true;
-            }
-        }
-        if (!foundAny) {
-            System.out.println("No centers found in this city.");
-        }
-    }
-
-    @Override
-    public void viewAvailableSlots(FlipFitGymCenter center) {
-        System.out.println("Available Slot for Center: " + center.getName());
-        if (center.getSlots().isEmpty()) {
-            System.out.println("No slots available at the moment.");
+    // Book a slot
+    public void bookSlot(Scanner scanner, int userId) {
+        List<String> cities = customerDAO.getAvailableCities();
+        if (cities.isEmpty()) {
+            System.out.println("No gyms available currently.");
             return;
         }
-        for (FlipFitGymSlot slotId : center.getSlots()) {
-            System.out.println("Slot ID: " + slotId);
+
+        int cityChoice = FlipFitIOUtils.getChoice(scanner, "Available Cities", cities);
+        String selectedCity = cities.get(cityChoice - 1);
+
+        // Fetch gyms
+        List<FlipFitGymCenter> gyms = customerDAO.getGymsByCity(selectedCity);
+        if (gyms.isEmpty()) {
+            System.out.println("No gyms found in this city.");
+            return;
+        }
+
+        int gymChoice = FlipFitIOUtils.getChoice(scanner, "Available Gyms", gyms);
+        FlipFitGymCenter selectedGym = gyms.get(gymChoice - 1);
+
+        // Fetch slots
+        List<FlipFitGymSlot> slots = customerDAO.getAvailableSlots(selectedGym.getId());
+        if (slots.isEmpty()) {
+            System.out.println("No slots available. Adding to waitlist...");
+            customerDAO.addToWaitlist(userId, selectedGym.getId());
+            return;
+        }
+
+        int slotChoice = FlipFitIOUtils.getChoice(scanner, "Available Slots", slots);
+        FlipFitBooking booking = customerDAO.bookSlot(userId, selectedGym.getId(), slots.get(slotChoice - 1).getSlotId());
+
+        if (booking != null) {
+            System.out.println("Slot booked successfully! Proceeding to payment...");
+            paymentService.processPayment(scanner, userId, booking.getBookingId());
         }
     }
 
-    @Override
-    public void bookSlot(FlipFitGymCustomer customer, FlipFitGymCenter center, String slotId) {
-        System.out.println("Booking Slot " + slotId + " at " + center.getName() + " for " + customer.getName() + "...");
-        System.out.println("Slot " + slotId + " booked successfully for " + customer.getName() + "!");
+    // View all bookings of a customer
+    public void viewBookings(int userId) {
+        List<FlipFitBooking> bookings = customerDAO.getUserBookings(userId);
+        if (bookings.isEmpty()) {
+            System.out.println("No bookings found.");
+            return;
+        }
+
+        System.out.println("\n=== Your Bookings ===");
+        for (FlipFitBooking booking : bookings) {
+            System.out.println("Booking ID: " + booking.getBookingId());
+            System.out.println("Gym ID: " + booking.getCenterId());
+            System.out.println("Slot ID: " + booking.getSlotId());
+            System.out.println("Status: " + booking.getStatus());
+            System.out.println("---------------------------");
+        }
+    }
+
+    // View payment information
+    public void viewPayments(int userId) {
+        List<FlipFitPayment> payments = customerDAO.getUserPayments(userId);
+        if (payments.isEmpty()) {
+            System.out.println("No payment records found.");
+            return;
+        }
+
+        System.out.println("\n=== Payment History ===");
+        for (FlipFitPayment payment : payments) {
+            System.out.println("Payment ID: " + payment.getPaymentId());
+            System.out.println("Amount: ₹" + payment.getAmount());
+            System.out.println("Status: " + payment.getStatus());
+            System.out.println("---------------------------");
+        }
+    }
+
+    // View notifications
+    public void viewNotifications(int userId) {
+        List<FlipFitNotification> notifications = customerDAO.getUserNotifications(userId);
+        if (notifications.isEmpty()) {
+            System.out.println("No notifications found.");
+            return;
+        }
+
+        System.out.println("\n=== Notifications ===");
+        for (FlipFitNotification notification : notifications) {
+            System.out.println("Message: " + notification.getMessage());
+            System.out.println("Status: " + notification.getStatus());
+            System.out.println("---------------------------");
+        }
     }
 }

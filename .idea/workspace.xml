@@ -6,19 +6,89 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JEDI-FLIPKART-DEVELOPMENT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-FLIPKART-DEVELOPMENT.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/DataBaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/DataBaseConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/DateUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/JsonUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/StringUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DataBaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DataBaseConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DateUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DateUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/JsonUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/JsonUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/StringUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/StringUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/BookingDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/GymDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/PaymentDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/SlotDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/DAO/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitBooking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymAdmin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymCenter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymCustomer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymOwner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymSlot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitNotification.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitPayment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitAdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitAdminServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitBookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitBookingServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitCustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitCustomerServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitGymOwnerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitGymOwnerServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitNotificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitNotificationServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitPaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitPaymentServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitAdminMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitApplicationMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitCustomerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitGymOwnerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/BookingDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/BookingDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/GymDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/GymDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/PaymentDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/PaymentDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/SlotDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/SlotDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/DAO/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAdminServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAdminServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitBookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitBookingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitBookingServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitBookingServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitGymOwnerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitGymOwnerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitGymOwnerServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitGymOwnerServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitNotificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitNotificationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitNotificationServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitNotificationServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentServiceInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitAdminMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitAdminMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitApplicationMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitApplicationMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitCustomerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitCustomerMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymOwnerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymOwnerMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +98,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -52,14 +124,14 @@
     "Application.TestDBConnection.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "predb",
+    "git-widget-placeholder": "ajitesh",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.TestDBConnection">
+  <component name="RunManager" selected="Application.FlipFitApplicationMenu">
     <configuration name="FlipFitApplicationMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flipkart.client.FlipFitApplicationMenu" />
       <module name="JEDI-FLIPKART-DEVELOPMENT" />
@@ -88,8 +160,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestDBConnection" />
         <item itemvalue="Application.FlipFitApplicationMenu" />
+        <item itemvalue="Application.TestDBConnection" />
       </list>
     </recent_temporary>
   </component>

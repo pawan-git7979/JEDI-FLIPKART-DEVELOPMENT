@@ -1,50 +1,22 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.FlipFitUser;
+import com.flipkart.dao.FlipFitAdmin.FlipFitAdminInterface;
+import com.flipkart.dao.FlipFitAdmin.FlipFitAdminImpl;
+import com.flipkart.bean.FlipFitGymOwner;
 import java.util.List;
-import java.util.ArrayList;
 
-public class FlipFitAdminService implements FlipFitAdminServiceInterface {
+public class FlipFitAdminService {
+    private FlipFitAdminInterface adminDAO = new FlipFitAdminImpl();
 
-    // Simulated local storage for gym requests and users.
-    private List<String> gymRequests = new ArrayList<>();
-    private List<FlipFitUser> users = new ArrayList<>();
-
-    public FlipFitAdminService() {
-        // Add a dummy request for demonstration
-        gymRequests.add("Request: Add new Center - Elite Fitness");
+    public List<FlipFitGymOwner> getPendingGymOwnerRequests() {
+        return adminDAO.getPendingGymOwnerRequests();
     }
 
-    @Override
-    public void approveGymRequests() {
-        if (gymRequests.isEmpty()) {
-            System.out.println("No gym requests to approve.");
-        } else {
-            System.out.println("Approving the following gym requests:");
-            for (String req : gymRequests) {
-                System.out.println("Approved: " + req);
-            }
-            gymRequests.clear();
-        }
+    public boolean approveGymOwner(int ownerId) {
+        return adminDAO.approveGymOwner(ownerId);
     }
 
-    @Override
-    public void generateReports() {
-        System.out.println("Generating Reports...");
-        System.out.println("Total Users: " + users.size());
-        System.out.println("Pending Gym Requests: " + gymRequests.size());
-    }
-
-    @Override
-    public void manageUsers() {
-        System.out.println("Listing registered users:");
-        for (FlipFitUser user : users) {
-            System.out.println(user);
-        }
-    }
-    
-    // For testing: add user
-    public void addUser(FlipFitUser user) {
-        users.add(user);
+    public boolean rejectGymOwner(int ownerId) {
+        return adminDAO.rejectGymOwner(ownerId);
     }
 }

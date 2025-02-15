@@ -1,29 +1,39 @@
 package com.flipkart.bean;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class FlipFitGymSlot {
-    private String slotId;
-    private String gymId;
+    private int slotId; // Changed to int to match DAO
+    private int gymId; // Changed to int to match DAO
     private String startTime;
     private String endTime;
     private String trainer;
     private int numOfSeats;
     private int numOfSeatsBooked;
+    private Queue<Integer> waitlistBookingIds; // Queue for FIFO ordering
 
-    public FlipFitGymSlot() {}
-
-    public FlipFitGymSlot(String slotId, String startTime, String endTime, int numOfSeats,
-                          String trainer, String gymId) {
-        this.slotId = slotId;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.numOfSeats = numOfSeats;
-        this.trainer = trainer;
-        this.gymId = gymId;
-        this.numOfSeatsBooked = 0;
+    public FlipFitGymSlot() {
+        this.waitlistBookingIds = new LinkedList<>();
     }
 
-    public String getSlotId() { return slotId; }
-    public void setSlotId(String slotId) { this.slotId = slotId; }
+    public FlipFitGymSlot(int slotId, int gymId, String startTime, String endTime,
+                          String trainer, int numOfSeats, int numOfSeatsBooked) {
+        this.slotId = slotId;
+        this.gymId = gymId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.trainer = trainer;
+        this.numOfSeats = numOfSeats;
+        this.numOfSeatsBooked = numOfSeatsBooked;
+        this.waitlistBookingIds = new LinkedList<>();
+    }
+
+    public int getSlotId() { return slotId; }
+    public void setSlotId(int slotId) { this.slotId = slotId; }
+
+    public int getGymId() { return gymId; }
+    public void setGymId(int gymId) { this.gymId = gymId; }
 
     public String getStartTime() { return startTime; }
     public void setStartTime(String startTime) { this.startTime = startTime; }
@@ -31,15 +41,37 @@ public class FlipFitGymSlot {
     public String getEndTime() { return endTime; }
     public void setEndTime(String endTime) { this.endTime = endTime; }
 
-    public int getNumOfSeats() { return numOfSeats; }
-    public void setNumOfSeats(int numOfSeats) { this.numOfSeats = numOfSeats; }
-
     public String getTrainer() { return trainer; }
     public void setTrainer(String trainer) { this.trainer = trainer; }
 
-    public String getGymId() { return gymId; }
-    public void setGymId(String gymId) { this.gymId = gymId; }
+    public int getNumOfSeats() { return numOfSeats; }
+    public void setNumOfSeats(int numOfSeats) { this.numOfSeats = numOfSeats; }
 
     public int getNumOfSeatsBooked() { return numOfSeatsBooked; }
     public void setNumOfSeatsBooked(int numOfSeatsBooked) { this.numOfSeatsBooked = numOfSeatsBooked; }
+
+    public Queue<Integer> getWaitlistBookingIds() { return waitlistBookingIds; }
+    public void setWaitlistBookingIds(Queue<Integer> waitlistBookingIds) { this.waitlistBookingIds = waitlistBookingIds; }
+
+    public void enqueueWaitlistBooking(int bookingId) {
+        waitlistBookingIds.add(bookingId);
+    }
+
+    public Integer dequeueWaitlistBooking() {
+        return waitlistBookingIds.poll();
+    }
+
+    @Override
+    public String toString() {
+        return "FlipFitGymSlot{" +
+                "slotId=" + slotId +
+                ", gymId=" + gymId +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", trainer='" + trainer + '\'' +
+                ", numOfSeats=" + numOfSeats +
+                ", numOfSeatsBooked=" + numOfSeatsBooked +
+                ", waitlistBookingIds=" + waitlistBookingIds +
+                '}';
+    }
 }

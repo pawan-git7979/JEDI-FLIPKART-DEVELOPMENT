@@ -1,15 +1,15 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-import com.flipkart.business.FlipFitCustomerService;
+import com.flipkart.business.FlipFitOwnerService;
 import com.flipkart.utils.FlipFitIOUtils;
 
-public class FlipFitCustomerMenu {
-    private FlipFitCustomerService customerService;
+public class FlipFitOwnerMenu {
+    private FlipFitOwnerService ownerService;
     private int userId;
 
-    public FlipFitCustomerMenu(int userId) { // ✅ Constructor initializes userId
-        this.customerService = new FlipFitCustomerService();
+    public FlipFitOwnerMenu(int userId) { // ✅ Constructor initializes userId
+        this.ownerService = new FlipFitOwnerService();
         this.userId = userId;
     }
 
@@ -17,27 +17,27 @@ public class FlipFitCustomerMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("\n=== FlipFit Customer Menu ===");
-            System.out.println("1. Book Slot");
-            System.out.println("2. View Bookings");
-            System.out.println("3. View Payment Info");
-            System.out.println("4. View Notifications");
+            System.out.println("\n=== FlipFit Gym Owner Menu ===");
+            System.out.println("1. Add a Gym Center");
+            System.out.println("2. Update Gym Information");
+            System.out.println("3. Add or Update a Slot");
+            System.out.println("4. View Bookings");
             System.out.println("5. Logout");
 
             int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
             switch (choice) {
                 case 1:
-                    customerService.bookSlot(scanner, userId);
+                    ownerService.addGymCenter(scanner, userId); // ✅ Pass userId
                     break;
                 case 2:
-                    customerService.viewBookings(userId);
+                    ownerService.updateGymInfo(scanner, userId); // ✅ Pass userId
                     break;
                 case 3:
-                    customerService.viewPayments(userId);
+                    ownerService.addOrUpdateSlot(scanner, userId); // ✅ Pass userId
                     break;
                 case 4:
-                    customerService.viewNotifications(userId);
+                    ownerService.viewBookings(userId); // ✅ Pass userId
                     break;
                 case 5:
                     exit = true;

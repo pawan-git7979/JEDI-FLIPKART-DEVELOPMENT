@@ -1,14 +1,19 @@
 package com.flipkart.business;
 
-import com.flipkart.bean.FlipFitUser;
+import java.util.Scanner;
 
-public class FlipFitPaymentService implements FlipFitPaymentServiceInterface {
+public class FlipFitPaymentService {
+    private FlipFitPaymentDAO paymentDAO = new FlipFitPaymentDAO();
 
-    @Override
-    public boolean processPayment(FlipFitUser user, double amount) {
-        System.out.println("Processing payment of $" + amount + " for " + user.getName() + "...");
-        // Simulate payment success
-        System.out.println("Payment successful!");
-        return true;
+    public void processPayment(Scanner scanner, int userId, int bookingId) {
+        System.out.println("Enter payment amount:");
+        double amount = scanner.nextDouble();
+
+        boolean paymentSuccess = paymentDAO.makePayment(userId, bookingId, amount);
+        if (paymentSuccess) {
+            System.out.println("Payment successful! Booking confirmed.");
+        } else {
+            System.out.println("Payment failed. Please try again.");
+        }
     }
 }

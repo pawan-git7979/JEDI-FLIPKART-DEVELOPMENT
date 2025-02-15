@@ -1,22 +1,31 @@
 package com.flipkart.bean;
 
 public class FlipFitUser {
+    public static final String ROLE_CUSTOMER = "CUSTOMER";
+    public static final String ROLE_OWNER = "OWNER";
+    public static final String ROLE_ADMIN = "ADMIN";
+
     private int userId;
     private String name;
     private String email;
     private String password;
-    private String role; // "GymCustomer", "GymOwner", "GymAdmin"
+    private String role;
+    private String address;
 
+    // Default Constructor
     public FlipFitUser() {}
 
-    public FlipFitUser(int userId, String name, String email, String password, String role) {
+    // Parameterized Constructor
+    public FlipFitUser(int userId, String name, String email, String password, String role, String address) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.address = address;
     }
 
+    // Getters and Setters
     public int getUserId() { return userId; }
     public void setUserId(int userId) { this.userId = userId; }
 
@@ -32,9 +41,17 @@ public class FlipFitUser {
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
 
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
     @Override
     public String toString() {
-        return "User{" + "userId=" + userId + ", name='" + name + '\'' +
-               ", email='" + email + '\'' + ", role='" + role + '\'' + '}';
+        return "FlipFitUser { " +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", address='" + address + '\'' +
+                " }";
     }
 }

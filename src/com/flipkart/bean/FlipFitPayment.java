@@ -6,7 +6,6 @@ public class FlipFitPayment {
     private double amount;
     private String status; // e.g., "SUCCESS", "FAILED", "PENDING"
 
-    public FlipFitPayment() {}
 
     public FlipFitPayment(int paymentId, int userId, double amount, String status) {
         this.paymentId = paymentId;
