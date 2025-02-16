@@ -5,6 +5,7 @@ import java.util.UUID;
 import com.flipkart.bean.FlipFitGymCustomer;
 import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.bean.FlipFitUser;
+import com.flipkart.constant.SQLQueries;
 import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerImpl;
 import com.flipkart.dao.FlipFitGymOwner.FlipFitGymOwnerImpl;
 import com.flipkart.utils.FlipFitDBUtil;
@@ -22,7 +23,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
             conn.setAutoCommit(false); // Start transaction
 
             // Insert into FlipFitUser table
-            String userInsertQuery = "INSERT INTO FlipFitUser (name, email, password, role, address) VALUES (?, ?, ?, ?, ?)";
+            String userInsertQuery = SQLQueries.ADD_USER;
             try (PreparedStatement userStmt = conn.prepareStatement(userInsertQuery, Statement.RETURN_GENERATED_KEYS)) {
 
                 userStmt.setString(1, user.getName());
@@ -108,7 +109,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
 public FlipFitUser getUserById(int userId) {
     FlipFitUser user = null;
     try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = "SELECT * FROM FlipFitUser WHERE userId = ?";
+        String query = SQLQueries.GET_USER_BY_ID;
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1, userId);
         ResultSet rs = stmt.executeQuery();
@@ -132,7 +133,7 @@ public FlipFitUser getUserById(int userId) {
 public FlipFitUser getUserByEmail(String email) {
     FlipFitUser user = null;
     try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = "SELECT * FROM FlipFitUser WHERE email = ?";
+        String query =SQLQueries.GET_USER_BY_EMAIL;
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, email);
         ResultSet rs = stmt.executeQuery();
@@ -156,7 +157,7 @@ public FlipFitUser getUserByEmail(String email) {
 public List<FlipFitUser> getAllUsers() {
     List<FlipFitUser> users = new ArrayList<>();
     try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = "SELECT * FROM FlipFitUser";
+            String query = SQLQueries.GET_ALL_USERS;
         PreparedStatement stmt = conn.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
@@ -178,7 +179,7 @@ public List<FlipFitUser> getAllUsers() {
 @Override
 public void updateUser(FlipFitUser user) {
     try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = "UPDATE FlipFitUser SET name = ?, email = ?, password = ?, role = ?, address = ? WHERE userId = ?";
+        String query = SQLQueries.UPDATE_USER;
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setString(1, user.getName());
         stmt.setString(2, user.getEmail());
@@ -195,7 +196,7 @@ public void updateUser(FlipFitUser user) {
 @Override
 public void deleteUser(int userId) {
     try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = "DELETE FROM FlipFitUser WHERE userId = ?";
+        String query = SQLQueries.DELETE_USER;
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setInt(1, userId);
         stmt.executeUpdate();

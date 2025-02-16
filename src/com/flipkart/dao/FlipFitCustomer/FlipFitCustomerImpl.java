@@ -1,6 +1,7 @@
 package com.flipkart.dao.FlipFitCustomer;
 
 import com.flipkart.bean.*;
+import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
             conn.setAutoCommit(false);
 
-            String query = "INSERT INTO FlipFitGymCustomer (userId, governmentDocumentNumber) VALUES (?, ?)";
+            String query = SQLQueries.REGISTER_GYM_CUSTOMER;
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setInt(1, customer.getUserId());
                 stmt.setString(2, customer.getGovernmentDocumentNumber());
@@ -42,7 +43,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     @Override
     public List<String> getAvailableCities() {
         List<String> cities = new ArrayList<>();
-        String query = "SELECT DISTINCT location FROM FlipFitGymCenter";
+        String query = SQLQueries.GET_AVAILABLE_CITIES;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -58,7 +59,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     @Override
     public List<FlipFitGymCenter> getGymsByCity(String city) {
         List<FlipFitGymCenter> gyms = new ArrayList<>();
-        String query = "SELECT * FROM FlipFitGymCenter WHERE location = ?";
+        String query = SQLQueries.GET_GYMS_BY_CITY;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, city);
@@ -83,7 +84,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     @Override
     public List<FlipFitGymSlot> getAvailableSlots(int gymId) {
         List<FlipFitGymSlot> slots = new ArrayList<>();
-        String query = "SELECT * FROM FlipFitGymSlot WHERE gymId = ? AND numOfSeats > numOfSeatsBooked";
+        String query = SQLQueries.GET_AVAILABLE_SLOTS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, gymId);
@@ -107,7 +108,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
     @Override
     public void addToWaitlist(int userId, int slotId) {
-        String query = "INSERT INTO waitlist (userId, slotId) VALUES (?, ?)";
+        String query = SQLQueries.ADD_TO_WAITLIST;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, userId);
@@ -120,8 +121,8 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
     @Override
     public FlipFitBooking bookSlot(int userId, int gymId, int slotId) {
-        String query = "INSERT INTO FlipFitBooking (userId, centerId, slotId, status) VALUES (?, ?, ?, 'BOOKED')";
-        String updateSlotQuery = "UPDATE FlipFitGymSlot SET numOfSeatsBooked = numOfSeatsBooked + 1 WHERE slotId = ?";
+        String query = SQLQueries.BOOK_SLOT;
+        String updateSlotQuery = SQLQueries.UPDATE_SLOT_BOOKING;
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -160,7 +161,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     @Override
     public List<FlipFitBooking> getUserBookings(int userId) {
         List<FlipFitBooking> bookings = new ArrayList<>();
-        String query = "SELECT * FROM FlipFitBooking WHERE userId = ?";
+        String query = SQLQueries.GET_USER_BOOKINGS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, userId);
@@ -187,7 +188,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     @Override
     public List<FlipFitPayment> getUserPayments(int userId) {
         List<FlipFitPayment> payments = new ArrayList<>();
-        String query = "SELECT * FROM FlipFitPayment WHERE userId = ?";  // Ensure table name is correct
+        String query = SQLQueries.GET_USER_PAYMENTS;  // Ensure table name is correct
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -214,7 +215,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     @Override
     public List<FlipFitNotification> getUserNotifications(int userId) {
         List<FlipFitNotification> notifications = new ArrayList<>();
-        String query = "SELECT * FROM FlipFitNotification WHERE userId = ?";
+        String query = SQLQueries.GET_USER_NOTIFICATIONS;
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {

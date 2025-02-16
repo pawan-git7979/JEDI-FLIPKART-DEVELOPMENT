@@ -1,6 +1,7 @@
 package com.flipkart.dao.FlipFitGymCenter;
 
 import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,8 +11,7 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     @Override
     public boolean addGym(FlipFitGymCenter gym) {
         try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO FlipFitGymCenter (name, location, owner_id) VALUES (?, ?, ?)")) {
+             PreparedStatement stmt = conn.prepareStatement(SQLQueries.ADD_GYM)) {
             stmt.setString(1, gym.getName());
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getOwnerId());
@@ -25,8 +25,7 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     @Override
     public boolean updateGymDetails(FlipFitGymCenter gym) {
         try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(
-                     "UPDATE FlipFitGymCenter SET name = ?, location = ? WHERE id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement(SQLQueries.UPDATE_GYM_DETAILS)) {
             stmt.setString(1, gym.getName());
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getId());
@@ -41,7 +40,7 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     public List<FlipFitGymCenter> getAllGyms() {
         List<FlipFitGymCenter> gyms = new ArrayList<>();
         try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM FlipFitGymCenter")) {
+             PreparedStatement stmt = conn.prepareStatement(SQLQueries.GET_ALL_GYMS_FOR_GYM_CENTER)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 FlipFitGymCenter gym = new FlipFitGymCenter();

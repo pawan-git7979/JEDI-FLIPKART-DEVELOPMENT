@@ -5,6 +5,7 @@ import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.flipkart.constant.SQLQueries; // ✅ Import query constants
 
 public class FlipFitAdminImpl implements FlipFitAdminInterface {
 
@@ -12,43 +13,26 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
     public List<FlipFitGymOwner> getPendingGymOwnerRequests() {
         List<FlipFitGymOwner> owners = new ArrayList<>();
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = """
-            SELECT 
-                u.userId, u.name, u.email, u.password, u.address, 
-                o.aadhaarNumber, o.panNumber, o.governmentDocument 
-            FROM FlipFitGymCenter gc
-            JOIN FlipFitGymOwner o ON gc.ownerId = o.ownerId
-            JOIN FlipFitUser u ON o.ownerId = u.userId
-            WHERE gc.status = 'PENDING'
-        """;
+            String query = SQLQueries.GET_PENDING_GYM_OWNER_REQUESTS;
 
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 int ownerId = rs.getInt("userId");
-                List<String> gymNames = getGymNamesByOwnerId(ownerId, conn); // ✅ Fetch gym names separately
-//                System.out.println("Owner ID: " + rs.getInt("userId"));
-//                System.out.println("Name: " + rs.getString("name"));
-//                System.out.println("Email: " + rs.getString("email"));
-//                System.out.println("Aadhaar: " + rs.getString("aadhaarNumber"));
-//                System.out.println("PAN: " + rs.getString("panNumber"));
-//                System.out.println("Document: " + rs.getString("governmentDocument"));
+                List<String> gymNames = getGymNamesByOwnerId(ownerId, conn);
 
                 owners.add(new FlipFitGymOwner(
                         ownerId,
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("password"),
-//                        "OWNER",
                         rs.getString("address"),
-                        gymNames, // ✅ Now correctly passing a List<String>
+                        gymNames,
                         rs.getString("aadhaarNumber"),
                         rs.getString("panNumber"),
                         rs.getString("governmentDocument")
                 ));
-//                System.out.println(gymNames);
-//                System.out.println(owners);
             }
 
         } catch (Exception e) {
@@ -60,7 +44,7 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
     @Override
     public boolean approveGymOwner(int ownerId) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "UPDATE FlipFitGymCenter SET status = 'APPROVED' WHERE ownerId = ?";
+            String query = SQLQueries.APPROVE_GYM_OWNER;
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, ownerId);
             return stmt.executeUpdate() > 0;
@@ -73,14 +57,12 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
     @Override
     public boolean rejectGymOwner(int ownerId) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            // First, delete all gym centers associated with the owner
-            String deleteGymsQuery = "DELETE FROM FlipFitGymCenter WHERE ownerId = ?";
+            String deleteGymsQuery = SQLQueries.DELETE_GYMS_BY_OWNER;
             PreparedStatement stmt1 = conn.prepareStatement(deleteGymsQuery);
             stmt1.setInt(1, ownerId);
             stmt1.executeUpdate();
 
-            // Then, delete the owner record
-            String deleteOwnerQuery = "DELETE FROM FlipFitGymOwner WHERE ownerId = ?";
+            String deleteOwnerQuery = SQLQueries.DELETE_GYM_OWNER;
             PreparedStatement stmt2 = conn.prepareStatement(deleteOwnerQuery);
             stmt2.setInt(1, ownerId);
             return stmt2.executeUpdate() > 0;
@@ -93,17 +75,13 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
     @Override
     public List<String> getAllCustomers() {
         List<String> customers = new ArrayList<>();
-        String query = """
-        SELECT u.name, u.email 
-        FROM FlipFitGymCustomer c
-        JOIN FlipFitUser u ON c.userId = u.userId
-    """;
+        String query = SQLQueries.GET_ALL_CUSTOMERS;
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 
-            if (!rs.isBeforeFirst()) { // Check if ResultSet is empty
+            if (!rs.isBeforeFirst()) {
                 System.out.println("No customers found.");
             }
 
@@ -116,24 +94,15 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         return customers;
     }
 
-
     @Override
     public List<String> getAllOwners() {
         List<String> owners = new ArrayList<>();
-        String query = """
-        SELECT DISTINCT u.name, u.email 
-        FROM FlipFitGymOwner o
-        JOIN FlipFitUser u ON o.ownerId = u.userId
-        WHERE EXISTS (
-            SELECT 1 FROM FlipFitGymCenter gc
-            WHERE gc.ownerId = o.ownerId AND gc.status = 'APPROVED'
-        )
-    """;
+        String query = SQLQueries.GET_ALL_OWNERS;
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
-            System.out.println(rs);
+
             if (!rs.isBeforeFirst()) {
                 System.out.println("No approved owners found.");
             }
@@ -147,7 +116,6 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         return owners;
     }
 
-    // ✅ Fetch gym names for a given ownerId
     private List<String> getGymNamesByOwnerId(int ownerId, Connection conn) {
         List<String> gymNames = new ArrayList<>();
 
@@ -156,7 +124,7 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
             return gymNames;
         }
 
-        String query = "SELECT name FROM FlipFitGymCenter WHERE ownerId = ?";
+        String query = SQLQueries.GET_GYM_NAMES_BY_OWNER;
 
         try (PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, ownerId);
@@ -175,13 +143,10 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         return gymNames;
     }
 
+    @Override
     public List<String> getAllGyms() {
         List<String> gyms = new ArrayList<>();
-        String query = """
-        SELECT name, location 
-        FROM FlipFitGymCenter
-        WHERE status = 'APPROVED'
-    """;
+        String query = SQLQueries.GET_ALL_GYMS;
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -199,5 +164,4 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         }
         return gyms;
     }
-
 }

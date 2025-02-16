@@ -1,6 +1,7 @@
 package com.flipkart.dao.FlipFitPayment;
 
 import com.flipkart.bean.FlipFitPayment;
+import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 
@@ -8,7 +9,7 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
 
     @Override
     public boolean processPayment(FlipFitPayment payment) {
-        String query = "INSERT INTO FlipFitPayment (userId, amount, status) VALUES (?, ?, ?)";
+        String query = SQLQueries.PROCESS_PAYMENT;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -32,7 +33,7 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
 
     @Override
     public FlipFitPayment getPaymentDetails(int paymentId) {
-        String query = "SELECT * FROM payments WHERE id = ?";
+        String query = SQLQueries.GET_PAYMENT_DETAILS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, paymentId);

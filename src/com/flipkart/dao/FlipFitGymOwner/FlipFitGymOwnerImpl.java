@@ -2,6 +2,7 @@ package com.flipkart.dao.FlipFitGymOwner;
 
 import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     public boolean registerGymOwner(FlipFitGymOwner owner) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String insertQuery = "INSERT INTO FlipFitGymOwner (ownerId, aadhaarNumber, panNumber, governmentDocument) VALUES (?, ?, ?, ?)"; // ownerId is the foreign key referencing userId
+            String insertQuery = SQLQueries.REGISTER_GYM_OWNER; // ownerId is the foreign key referencing userId
             try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
                 stmt.setInt(1, owner.getUserId()); // Use userId here!
                 stmt.setString(2, owner.getAadhaarNumber());
@@ -31,7 +32,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public FlipFitGymOwner getOwnerById(int ownerId) {
-        String query = "SELECT * FROM FlipFitGymOwner WHERE user_id = ?";
+        String query = SQLQueries.GET_OWNER_BY_ID;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, ownerId);
@@ -54,7 +55,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
     // ✅ New Method: Implement `updateOwnerDetails()`
     @Override
     public boolean updateOwnerDetails(FlipFitGymOwner owner) {
-        String query = "UPDATE gym_owners SET gym_names = ?, aadhaar_number = ?, pan_number = ?, government_document = ? WHERE user_id = ?";
+        String query = SQLQueries.UPDATE_OWNER_DETAILS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, String.join(",", owner.getGymNames())); // Convert list to string
@@ -72,7 +73,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
     @Override
     public List<FlipFitGymOwner> getAllOwners() {
         List<FlipFitGymOwner> owners = new ArrayList<>();
-        String query = "SELECT * FROM gym_owners";
+        String query = SQLQueries.GET_ALL_OWNERS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -94,7 +95,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean addGymCenter(FlipFitGymCenter gym) {
-        String query = "INSERT INTO FlipFitGymCenter (name, location, ownerId, adminId) VALUES (?, ?, ?, ?)";
+        String query = SQLQueries.ADD_GYM_CENTER;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, gym.getName());
@@ -112,7 +113,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean updateGymInfo(FlipFitGymCenter gym) {
-        String query = "UPDATE FlipFitGymCenter SET name = ?, location = ? WHERE gymId = ?";
+        String query = SQLQueries.UPDATE_GYM_DETAILS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, gym.getName());
@@ -127,8 +128,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats) {
-        String query = "INSERT INTO FlipFitGymSlot (gymId, startTime, endTime, numOfSeats) VALUES (?, ?, ?, ?) " +
-                "ON DUPLICATE KEY UPDATE startTime = ?, endTime = ?, numOfSeats = ?";
+        String query = SQLQueries.ADD_OR_UPDATE_SLOT;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, gymId);
@@ -148,7 +148,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
     @Override
     public List<String> viewBookings(int ownerId) {
         List<String> bookings = new ArrayList<>();
-        String query = "SELECT * FROM FlipFitBooking WHERE centerId IN (SELECT gymId FROM FlipFitGymCenter WHERE ownerId = ?)";
+        String query = SQLQueries.VIEW_BOOKINGS;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, ownerId);
