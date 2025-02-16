@@ -9,22 +9,25 @@ import java.util.List;
 
 public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
-    @Override
+
     public boolean registerGymOwner(FlipFitGymOwner owner) {
-        String query = "INSERT INTO FlipFitGymOwner (user_id, gym_names, aadhaar_number, pan_number, government_document) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, owner.getUserId());
-            stmt.setString(2, String.join(",", owner.getGymNames())); // Convert list to string
-            stmt.setString(3, owner.getAadhaarNumber());
-            stmt.setString(4, owner.getPanNumber());
-            stmt.setString(5, owner.getGovernmentDocument());
-            return stmt.executeUpdate() > 0;
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
+            String insertQuery = "INSERT INTO FlipFitGymOwner (ownerId, aadhaarNumber, panNumber, governmentDocument) VALUES (?, ?, ?, ?)"; // ownerId is the foreign key referencing userId
+            try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
+                stmt.setInt(1, owner.getUserId()); // Use userId here!
+                stmt.setString(2, owner.getAadhaarNumber());
+                stmt.setString(3, owner.getPanNumber());
+                stmt.setString(4, owner.getGovernmentDocument());
+
+                int rowsAffected = stmt.executeUpdate();
+                return rowsAffected > 0;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
+
 
     @Override
     public FlipFitGymOwner getOwnerById(int ownerId) {

@@ -6,12 +6,13 @@ public class FlipFitGymCustomer extends FlipFitUser {
     private List<Integer> bookingSlotIds;
     private String governmentDocumentNumber;
 
-    // Default Constructor
-    public FlipFitGymCustomer(){}
-    // Parameterized Constructor
+    public FlipFitGymCustomer() {
+        super();
+    }
+
     public FlipFitGymCustomer(int userId, String name, String email, String password, String address,
                               String governmentDocumentNumber) {
-        super(userId, name, email, password, "GymCustomer", address);
+        super(userId, name, email, password, FlipFitUser.ROLE_CUSTOMER, address);
         this.governmentDocumentNumber = governmentDocumentNumber;
     }
 

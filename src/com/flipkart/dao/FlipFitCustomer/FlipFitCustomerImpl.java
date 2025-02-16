@@ -8,6 +8,26 @@ import java.util.List;
 
 public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
+
+
+        public boolean registerGymCustomer(FlipFitGymCustomer customer) {
+            try (Connection conn = FlipFitDBUtil.getConnection()) {
+                String insertQuery = "INSERT INTO FlipFitGymCustomer (customerId, governmentDocumentNumber) VALUES (?, ?)";
+
+                try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
+                    stmt.setInt(1, customer.getUserId());
+                    stmt.setString(2, customer.getGovernmentDocumentNumber());
+
+                    int rowsAffected = stmt.executeUpdate();
+                    return rowsAffected > 0;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+
     @Override
     public List<String> getAvailableCities() {
         List<String> cities = new ArrayList<>();

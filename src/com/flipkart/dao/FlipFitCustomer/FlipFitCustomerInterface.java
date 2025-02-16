@@ -5,6 +5,7 @@ import com.flipkart.bean.*;
 import java.util.List;
 
 public interface FlipFitCustomerInterface {
+    boolean registerGymCustomer(FlipFitGymCustomer customer);
     List<String> getAvailableCities();
     List<FlipFitGymCenter> getGymsByCity(String city);
     List<FlipFitGymSlot> getAvailableSlots(int gymId);

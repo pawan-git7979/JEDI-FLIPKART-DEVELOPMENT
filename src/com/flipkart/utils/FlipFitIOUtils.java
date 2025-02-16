@@ -19,8 +19,10 @@ public class FlipFitIOUtils {
 
     public static String getStringInput(String prompt, Scanner scanner) {
         System.out.println(prompt);
-        return scanner.nextLine(); // No need for extra nextLine() here
+        String input = scanner.nextLine(); // Always use nextLine() inside the utility function.
+        return input;
     }
+
 
 
     // ✅ Add this method to allow selection from a list

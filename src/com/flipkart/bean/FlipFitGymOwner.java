@@ -9,24 +9,22 @@ public class FlipFitGymOwner extends FlipFitUser {
     private String panNumber;
     private String governmentDocument;
 
-
-
     public FlipFitGymOwner() {
-        super(); // Call the superclass (FlipFitUser) default constructor
-        this.gymNames = new ArrayList<>(); // Initialize gymNames to avoid NullPointerExceptions
-        this.aadhaarNumber = null;
-        this.panNumber = null;
-        this.governmentDocument = null;
+        super();
+        this.gymNames = new ArrayList<>();
     }
- // Parameterized Constructor
-    public FlipFitGymOwner(int userId, String name, String email, String password, String role,
-                           String address, List<String> gymNames, String aadhaarNumber, String panNumber,
+
+    public FlipFitGymOwner(int userId, String name, String email, String password, String address,
+                           List<String> gymNames, String aadhaarNumber, String panNumber,
                            String governmentDocument) {
-        super(userId, name, email, password, role, address);
+        super(userId, name, email, password, FlipFitUser.ROLE_OWNER, address);
         this.gymNames = gymNames;
         this.aadhaarNumber = aadhaarNumber;
         this.panNumber = panNumber;
         this.governmentDocument = governmentDocument;
+    }
+
+    public FlipFitGymOwner(int ownerId, String name, String email, String password, String owner, String address, List<String> gymNames, String aadhaarNumber, String panNumber, String governmentDocument) {
     }
 
     // Getters and Setters
