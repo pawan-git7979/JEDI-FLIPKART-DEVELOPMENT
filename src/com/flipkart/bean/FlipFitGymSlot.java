@@ -12,21 +12,23 @@ public class FlipFitGymSlot {
     private int numOfSeats;
     private int numOfSeatsBooked;
     private Queue<Integer> waitlistBookingIds; // Queue for FIFO ordering
+    private final int price; // Added price
 
-    public FlipFitGymSlot() {
-        this.waitlistBookingIds = new LinkedList<>();
-    }
+//    public FlipFitGymSlot() {
+//        this.waitlistBookingIds = new LinkedList<>();
+//    }
 
     public FlipFitGymSlot(int slotId, int gymId, String startTime, String endTime,
-                          String trainer, int numOfSeats, int numOfSeatsBooked) {
+                           int numOfSeats, int numOfSeatsBooked, int price) {
         this.slotId = slotId;
         this.gymId = gymId;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.trainer = trainer;
+//        this.trainer = trainer;
         this.numOfSeats = numOfSeats;
         this.numOfSeatsBooked = numOfSeatsBooked;
         this.waitlistBookingIds = new LinkedList<>();
+        this.price =price;
     }
 
     public int getSlotId() { return slotId; }
@@ -42,6 +44,11 @@ public class FlipFitGymSlot {
     public void setEndTime(String endTime) { this.endTime = endTime; }
 
     public String getTrainer() { return trainer; }
+
+    public int getPrice() {
+        return price;
+    }
+
     public void setTrainer(String trainer) { this.trainer = trainer; }
 
     public int getNumOfSeats() { return numOfSeats; }
@@ -68,10 +75,11 @@ public class FlipFitGymSlot {
                 ", gymId=" + gymId +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
-                ", trainer='" + trainer + '\'' +
+//                ", trainer='" + trainer + '\'' +
                 ", numOfSeats=" + numOfSeats +
                 ", numOfSeatsBooked=" + numOfSeatsBooked +
                 ", waitlistBookingIds=" + waitlistBookingIds +
+                " , price=" + price +
                 '}';
     }
 }

@@ -10,7 +10,7 @@ public interface FlipFitCustomerInterface {
     List<FlipFitGymCenter> getGymsByCity(String city);
     List<FlipFitGymSlot> getAvailableSlots(int gymId);
     void addToWaitlist(int userId, int slotId);
-    FlipFitBooking bookSlot(int userId, int gymId, int slotId);
+    FlipFitBooking bookSlot(int userId, int gymId, Integer slotId, int booked);
     List<FlipFitBooking> getUserBookings(int userId);
     List<FlipFitPayment> getUserPayments(int userId);
     List<FlipFitNotification> getUserNotifications(int userId);

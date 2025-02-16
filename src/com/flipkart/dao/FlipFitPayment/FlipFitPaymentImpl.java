@@ -52,4 +52,18 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
         }
         return null;
     }
+    public void sendNotification(int userId, int bookingId, int price) {
+        String message = "Your booking with ID " + bookingId + " has been processed. The total price is $" + price + ".";
+        String query = SQLQueries.NOTIFY_USER;
+
+        try (Connection conn = FlipFitDBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            stmt.setString(2, message);
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

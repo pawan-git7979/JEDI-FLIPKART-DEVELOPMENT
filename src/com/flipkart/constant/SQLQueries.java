@@ -70,10 +70,10 @@ public class SQLQueries {
             "SELECT * FROM FlipFitGymSlot WHERE gymId = ? AND numOfSeats > numOfSeatsBooked";
 
     public static final String ADD_TO_WAITLIST =
-            "INSERT INTO waitlist (userId, slotId) VALUES (?, ?)";
+            "INSERT INTO FlipFitGymWaitlist (userId, slotId, status) VALUES (?, ?, 'WAITING')";
 
     public static final String BOOK_SLOT =
-            "INSERT INTO FlipFitBooking (userId, centerId, slotId, status) VALUES (?, ?, ?, 'BOOKED')";
+            "INSERT INTO FlipFitBooking (userId, centerId, slotId, status) VALUES (?, ?, ?, ?)";
 
     public static final String UPDATE_SLOT_BOOKING =
             "UPDATE FlipFitGymSlot SET numOfSeatsBooked = numOfSeatsBooked + 1 WHERE slotId = ?";
@@ -86,6 +86,9 @@ public class SQLQueries {
 
     public static final String GET_USER_NOTIFICATIONS =
             "SELECT * FROM FlipFitNotification WHERE userId = ?";
+
+    public static final String NOTIFY_USER=
+            "INSERT INTO FlipFitNotification (userId, message) VALUES (?, ?)";
 
     // FlipFitGymCenter Queries
     public static final String ADD_GYM =
@@ -119,7 +122,7 @@ public class SQLQueries {
 
     // FlipFitGymSlot Queries
     public static final String ADD_OR_UPDATE_SLOT =
-            "INSERT INTO FlipFitGymSlot (gymId, startTime, endTime, numOfSeats) VALUES (?, ?, ?, ?) " +
+            "INSERT INTO FlipFitGymSlot (gymId, startTime, endTime, numOfSeats, price) VALUES (?, ?, ?, ?, ?) " +
                     "ON DUPLICATE KEY UPDATE startTime = ?, endTime = ?, numOfSeats = ?";
 
     // FlipFitBooking Queries

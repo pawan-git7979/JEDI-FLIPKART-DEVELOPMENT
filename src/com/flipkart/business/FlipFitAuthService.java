@@ -37,7 +37,7 @@ public class FlipFitAuthService {
 
         FlipFitUser newUser = new FlipFitUser(0, name, email, password, formattedRole, address);
 
-        System.out.println("bana kya?");
+//        System.out.println("bana kya?");
 
         if (userDAO.addUser(newUser)) {
             System.out.println("Registration successful!");

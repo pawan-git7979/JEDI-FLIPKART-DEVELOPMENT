@@ -89,15 +89,17 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, gymId);
             ResultSet rs = stmt.executeQuery();
+            System.out.println(rs);
             while (rs.next()) {
                 slots.add(new FlipFitGymSlot(
                         rs.getInt("slotId"),
                         rs.getInt("gymId"),
                         rs.getString("startTime"),
                         rs.getString("endTime"),
-                        rs.getString("trainer"),
+//                        rs.getString("trainer"),
                         rs.getInt("numOfSeats"),
-                        rs.getInt("numOfSeatsBooked") // ✅ Remove the extra null argument
+                        rs.getInt("numOfSeatsBooked") ,// ✅ Remove the extra null argument
+                        rs.getInt("price")
                 ));
             }
         } catch (SQLException e) {
@@ -106,6 +108,18 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         return slots;
     }
 
+
+//    public void addToWaitlist(int userId, int slotId) {
+//        String query = SQLQueries.ADD_TO_WAITLIST;
+//        try (Connection conn = FlipFitDBUtil.getConnection();
+//             PreparedStatement stmt = conn.prepareStatement(query)) {
+//            stmt.setInt(1, userId);
+//            stmt.setInt(2, slotId);
+//            stmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
     @Override
     public void addToWaitlist(int userId, int slotId) {
         String query = SQLQueries.ADD_TO_WAITLIST;
@@ -114,13 +128,14 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
             stmt.setInt(1, userId);
             stmt.setInt(2, slotId);
             stmt.executeUpdate();
+            System.out.println("User " + userId + " added to waitlist for slot " + slotId);
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();  // Keeping this as it was
         }
     }
 
     @Override
-    public FlipFitBooking bookSlot(int userId, int gymId, int slotId) {
+    public FlipFitBooking bookSlot(int userId, int gymId, Integer slotId, int booked) {
         String query = SQLQueries.BOOK_SLOT;
         String updateSlotQuery = SQLQueries.UPDATE_SLOT_BOOKING;
 
@@ -130,12 +145,23 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
             stmt.setInt(1, userId);
             stmt.setInt(2, gymId);
+
+            // Assign slotId = 0 if null (for waitlist)
+            if (slotId == null) {
+                slotId = 0;
+            }
             stmt.setInt(3, slotId);
+
+            String status = (booked == 1) ? "BOOKED" : "WAITLISTED";
+            stmt.setString(4, status);
+            System.out.println(stmt);
             int affectedRows = stmt.executeUpdate();
 
             if (affectedRows > 0) {
-                updateSlotStmt.setInt(1, slotId);
-                updateSlotStmt.executeUpdate();
+                if (slotId > 0 && booked == 1) {
+                    updateSlotStmt.setInt(1, slotId);
+                    updateSlotStmt.executeUpdate();
+                }
 
                 ResultSet generatedKeys = stmt.getGeneratedKeys();
                 if (generatedKeys.next()) {
@@ -144,19 +170,20 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                             userId,
                             gymId,
                             slotId,
-                            BookingStatus.BOOKED, // ✅ Corrected ENUM
+                            (booked == 1) ? BookingStatus.BOOKED : BookingStatus.WAITLISTED,
                             0,
                             null,
                             null
                     );
                 }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
-
 
     @Override
     public List<FlipFitBooking> getUserBookings(int userId) {

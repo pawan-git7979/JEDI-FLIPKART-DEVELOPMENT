@@ -47,8 +47,9 @@ public class FlipFitGymOwnerService {
         String startTime = FlipFitIOUtils.getStringInput("Enter Slot Start Time (HH:MM): ", scanner);
         String endTime = FlipFitIOUtils.getStringInput("Enter Slot End Time (HH:MM): ", scanner);
         int seats = FlipFitIOUtils.getIntInput("Enter Number of Seats: ", scanner);
+        int price = FlipFitIOUtils.getIntInput("Enter Price: ", scanner);
 
-        return ownerDAO.addOrUpdateSlot(gymId, startTime, endTime, seats);
+        return ownerDAO.addOrUpdateSlot(gymId, startTime, endTime, seats,price);
     }
 
     // ✅ View Bookings

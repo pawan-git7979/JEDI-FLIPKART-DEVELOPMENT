@@ -102,7 +102,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getOwnerId());
             stmt.setInt(4, gym.getAdminId());
-            System.out.println(stmt);
+//            System.out.println(stmt);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,7 +127,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
     }
 
     @Override
-    public boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats) {
+    public boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats, int price) {
         String query = SQLQueries.ADD_OR_UPDATE_SLOT;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -138,6 +138,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
             stmt.setString(5, startTime);
             stmt.setString(6, endTime);
             stmt.setInt(7, seats);
+            stmt.setInt(8, price);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -154,7 +155,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
             stmt.setInt(1, ownerId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                bookings.add("Booking ID: " + rs.getInt("id") + " | Status: " + rs.getString("status"));
+                bookings.add("Booking ID: " + rs.getInt("bookingId") + " | Status: " + rs.getString("status"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

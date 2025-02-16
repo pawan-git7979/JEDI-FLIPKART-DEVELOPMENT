@@ -40,16 +40,31 @@ public class FlipFitCustomerService {
         List<FlipFitGymSlot> slots = customerDAO.getAvailableSlots(selectedGym.getId());
         if (slots.isEmpty()) {
             System.out.println("No slots available. Adding to waitlist...");
+
+            // Add user to waitlist
             customerDAO.addToWaitlist(userId, selectedGym.getId());
+            System.out.println("You have been added to the waitlist for Gym ID: " + selectedGym.getId());
+            // Insert waitlisted booking (slotId set to NULL)
+//            FlipFitBooking waitlistBooking = customerDAO.bookSlot(userId, selectedGym.getId(), 0, 0);
+//
+//            if (waitlistBooking != null) {
+//                System.out.println("You have been added to the waitlist for Gym ID: " + selectedGym.getId());
+//            } else {
+//                System.out.println("Error adding to waitlist.");
+//            }
             return;
         }
 
         int slotChoice = FlipFitIOUtils.getChoice(scanner, "Available Slots", slots);
-        FlipFitBooking booking = customerDAO.bookSlot(userId, selectedGym.getId(), slots.get(slotChoice - 1).getSlotId());
+        FlipFitGymSlot selectedSlot = slots.get(slotChoice - 1);
+
+        // Proceed with normal slot booking
+        FlipFitBooking booking = customerDAO.bookSlot(userId, selectedGym.getId(), selectedSlot.getSlotId(), 1);
+        int slotPrice = selectedSlot.getPrice();
 
         if (booking != null) {
-            System.out.println("Slot booked successfully! Proceeding to payment...");
-            paymentService.processPayment(scanner, userId, booking.getBookingId());
+            System.out.println("Slot chosen successfully! Proceeding to payment...");
+            paymentService.processPayment(scanner, userId, booking.getBookingId(), slotPrice);
         }
     }
 
@@ -87,6 +102,7 @@ public class FlipFitCustomerService {
             System.out.println("---------------------------");
         }
     }
+
 
     // View notifications
     public void viewNotifications(int userId) {

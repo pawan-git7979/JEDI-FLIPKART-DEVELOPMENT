@@ -5,4 +5,5 @@ import com.flipkart.bean.FlipFitPayment;
 public interface FlipFitPaymentInterface {
     boolean processPayment(FlipFitPayment payment);
     FlipFitPayment getPaymentDetails(int paymentId);
+    void sendNotification(int userId, int bookingId, int price);
 }

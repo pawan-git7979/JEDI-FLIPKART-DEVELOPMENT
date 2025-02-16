@@ -11,6 +11,6 @@ public interface FlipFitGymOwnerInterface {
     boolean updateOwnerDetails(FlipFitGymOwner owner);
     boolean addGymCenter(FlipFitGymCenter gym);
     boolean updateGymInfo(FlipFitGymCenter gym);
-    boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats);
+    boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats, int price);
     List<String> viewBookings(int ownerId);
 }
