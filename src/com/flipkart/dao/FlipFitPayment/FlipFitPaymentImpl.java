@@ -5,15 +5,25 @@ import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 
 public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
+
     @Override
     public boolean processPayment(FlipFitPayment payment) {
+        String query = "INSERT INTO payments (user_id, amount, status) VALUES (?, ?, ?)";
         try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO payments (user_id, amount, status) VALUES (?, ?, ?)")) {
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+
             stmt.setInt(1, payment.getUserId());
             stmt.setDouble(2, payment.getAmount());
-            stmt.setString(3, payment.getStatus().toString());
-            return stmt.executeUpdate() > 0;
+            stmt.setString(3, payment.getStatus());
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    payment.setPaymentId(generatedKeys.getInt(1));
+                }
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -22,8 +32,9 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
 
     @Override
     public FlipFitPayment getPaymentDetails(int paymentId) {
+        String query = "SELECT * FROM payments WHERE id = ?";
         try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM payments WHERE id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, paymentId);
             ResultSet rs = stmt.executeQuery();
 
@@ -32,6 +43,7 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
                 payment.setPaymentId(rs.getInt("id"));
                 payment.setUserId(rs.getInt("user_id"));
                 payment.setAmount(rs.getDouble("amount"));
+                payment.setStatus(rs.getString("status"));
                 return payment;
             }
         } catch (SQLException e) {

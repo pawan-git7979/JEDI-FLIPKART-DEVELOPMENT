@@ -52,7 +52,7 @@ public class FlipFitApplicationMenu {
                 new FlipFitCustomerMenu(user.getUserId()).showMenu(scanner); // ✅ Now works correctly
                 break;
             case FlipFitUser.ROLE_OWNER:
-                new FlipFitOwnerMenu(user.getUserId()).showMenu(scanner); // ✅ Fixed for OwnerMenu
+                new FlipFitGymOwnerMenu(user.getUserId()).showMenu(scanner); // ✅ Fixed for OwnerMenu
                 break;
             case FlipFitUser.ROLE_ADMIN:
                 new FlipFitAdminMenu().showMenu(scanner); // ✅ No userId required for admin

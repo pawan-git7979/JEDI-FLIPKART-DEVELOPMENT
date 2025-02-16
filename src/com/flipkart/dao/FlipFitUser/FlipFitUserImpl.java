@@ -1,5 +1,5 @@
 package com.flipkart.dao.FlipFitUser;
-
+import java.util.UUID;
 import com.flipkart.bean.FlipFitUser;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
@@ -11,7 +11,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     @Override
     public boolean addUser(FlipFitUser user) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "INSERT INTO users (name, email, password, role, address) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO FlipFitUser (name, email, password, role, address) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1, user.getName());
@@ -44,7 +44,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     public FlipFitUser getUserById(int userId) {
         FlipFitUser user = null;
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "SELECT * FROM users WHERE userId = ?";
+            String query = "SELECT * FROM FlipFitUser WHERE userId = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
@@ -68,7 +68,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     public FlipFitUser getUserByEmail(String email) {
         FlipFitUser user = null;
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "SELECT * FROM users WHERE email = ?";
+            String query = "SELECT * FROM FlipFitUser WHERE email = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
@@ -92,7 +92,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     public List<FlipFitUser> getAllUsers() {
         List<FlipFitUser> users = new ArrayList<>();
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "SELECT * FROM users";
+            String query = "SELECT * FROM FlipFitUser";
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -114,7 +114,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     @Override
     public void updateUser(FlipFitUser user) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "UPDATE users SET name = ?, email = ?, password = ?, role = ?, address = ? WHERE userId = ?";
+            String query = "UPDATE FlipFitUser SET name = ?, email = ?, password = ?, role = ?, address = ? WHERE userId = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getEmail());
@@ -131,7 +131,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     @Override
     public void deleteUser(int userId) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = "DELETE FROM users WHERE userId = ?";
+            String query = "DELETE FROM FlipFitUser WHERE userId = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, userId);
             stmt.executeUpdate();

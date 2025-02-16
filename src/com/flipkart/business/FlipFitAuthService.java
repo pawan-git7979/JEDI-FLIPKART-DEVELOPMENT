@@ -25,7 +25,19 @@ public class FlipFitAuthService {
         String role = FlipFitIOUtils.getStringInput("Enter Role (customer/owner): ", scanner);
         String address = FlipFitIOUtils.getStringInput("Enter Address: ", scanner);
 
-        FlipFitUser newUser = new FlipFitUser(0, name, email, password, role.toUpperCase(), address);
+        String formattedRole = "";
+        if (role.equals("customer")) {
+            formattedRole = "CUSTOMER";
+        } else if (role.equals("owner")) {
+            formattedRole = "OWNER";
+        } else {
+            System.out.println("Invalid role. Please enter 'customer' or 'owner'.");
+            return false;
+        }
+
+        FlipFitUser newUser = new FlipFitUser(0, name, email, password, formattedRole, address);
+
+        System.out.println("bana kya?");
 
         if (userDAO.addUser(newUser)) {
             System.out.println("Registration successful!");

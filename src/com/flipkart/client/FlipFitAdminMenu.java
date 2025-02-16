@@ -5,13 +5,13 @@ import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.business.FlipFitAdminService;
 
 public class FlipFitAdminMenu {
-    public void showMenu(Scanner scanner) { // ✅ Removed static
-        FlipFitAdminService adminService = new FlipFitAdminService(); // ✅ Create instance
+    public void showMenu(Scanner scanner) {
+        FlipFitAdminService adminService = new FlipFitAdminService();
         boolean exit = false;
 
         while (!exit) {
             System.out.println("\n=== FlipFit Admin Menu ===");
-            System.out.println("1. View Pending Gym Owner Requests");
+            System.out.println("1. View & Process Pending Gym Owner Requests");
             System.out.println("2. View All Gym Customers");
             System.out.println("3. View All Gym Owners");
             System.out.println("4. Logout");
@@ -20,7 +20,7 @@ public class FlipFitAdminMenu {
 
             switch (choice) {
                 case 1:
-                    adminService.viewPendingRequests(scanner); // ✅ Use instance method
+                    adminService.processPendingGymOwnerRequests(scanner); // ✅ Business logic in service layer
                     break;
                 case 2:
                     adminService.viewAllCustomers();

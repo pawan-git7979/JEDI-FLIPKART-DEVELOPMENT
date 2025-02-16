@@ -1,8 +1,6 @@
 package com.flipkart.dao.FlipFitCustomer;
 
-import com.flipkart.bean.FlipFitGymCenter;
-import com.flipkart.bean.FlipFitGymSlot;
-import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.*;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
@@ -67,8 +65,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                         rs.getString("endTime"),
                         rs.getString("trainer"),
                         rs.getInt("numOfSeats"),
-                        rs.getInt("numOfSeatsBooked"),
-                        null
+                        rs.getInt("numOfSeatsBooked") // ✅ Remove the extra null argument
                 ));
             }
         } catch (SQLException e) {
@@ -94,6 +91,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     public FlipFitBooking bookSlot(int userId, int gymId, int slotId) {
         String query = "INSERT INTO bookings (userId, gymId, slotId, status) VALUES (?, ?, ?, 'BOOKED')";
         String updateSlotQuery = "UPDATE slots SET numOfSeatsBooked = numOfSeatsBooked + 1 WHERE slotId = ?";
+
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
              PreparedStatement updateSlotStmt = conn.prepareStatement(updateSlotQuery)) {
@@ -114,7 +112,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                             userId,
                             gymId,
                             slotId,
-                            "BOOKED",
+                            BookingStatus.BOOKED, // ✅ Corrected ENUM
                             0,
                             null,
                             null
@@ -126,6 +124,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         }
         return null;
     }
+
 
     @Override
     public List<FlipFitBooking> getUserBookings(int userId) {
@@ -141,15 +140,69 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                         rs.getInt("userId"),
                         rs.getInt("gymId"),
                         rs.getInt("slotId"),
-                        rs.getString("status"),
+                        BookingStatus.valueOf(rs.getString("status")), // ✅ Convert String to ENUM
                         rs.getInt("paymentId"),
-                        rs.getTimestamp("bookingTime"),
-                        rs.getTimestamp("updatedTime")
+                        rs.getTimestamp("bookingTime").toLocalDateTime(), // ✅ Convert Timestamp to LocalDateTime
+                        rs.getTimestamp("updatedTime") != null ? rs.getTimestamp("updatedTime").toLocalDateTime() : null // ✅ Handle NULL case
                 ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return bookings;
+    }
+
+
+    @Override
+    public List<FlipFitPayment> getUserPayments(int userId) {
+        List<FlipFitPayment> payments = new ArrayList<>();
+        String query = "SELECT * FROM FlipFitPayment WHERE userId = ?";  // Ensure table name is correct
+
+        try (Connection conn = FlipFitDBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                FlipFitPayment payment = new FlipFitPayment(
+                        rs.getInt("paymentId"),
+                        rs.getInt("userId"),
+                        rs.getDouble("amount"),
+                        rs.getString("status")
+                );
+                payments.add(payment);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return payments;
+    }
+
+
+    @Override
+    public List<FlipFitNotification> getUserNotifications(int userId) {
+        List<FlipFitNotification> notifications = new ArrayList<>();
+        String query = "SELECT * FROM FlipFitNotification WHERE userId = ?";
+
+        try (Connection conn = FlipFitDBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                FlipFitNotification notification = new FlipFitNotification(
+                        rs.getInt("notificationId"),
+                        rs.getInt("userId"),
+                        rs.getString("message"),
+                        rs.getString("status")
+                );
+                notifications.add(notification);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return notifications;
     }
 }

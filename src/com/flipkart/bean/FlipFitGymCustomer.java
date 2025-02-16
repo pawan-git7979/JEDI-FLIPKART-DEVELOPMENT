@@ -7,7 +7,7 @@ public class FlipFitGymCustomer extends FlipFitUser {
     private String governmentDocumentNumber;
 
     // Default Constructor
-
+    public FlipFitGymCustomer(){}
     // Parameterized Constructor
     public FlipFitGymCustomer(int userId, String name, String email, String password, String address,
                               String governmentDocumentNumber) {

@@ -1,5 +1,6 @@
 package com.flipkart.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FlipFitGymOwner extends FlipFitUser {
@@ -8,9 +9,16 @@ public class FlipFitGymOwner extends FlipFitUser {
     private String panNumber;
     private String governmentDocument;
 
-    // Default Constructor
 
-    // Parameterized Constructor
+
+    public FlipFitGymOwner() {
+        super(); // Call the superclass (FlipFitUser) default constructor
+        this.gymNames = new ArrayList<>(); // Initialize gymNames to avoid NullPointerExceptions
+        this.aadhaarNumber = null;
+        this.panNumber = null;
+        this.governmentDocument = null;
+    }
+ // Parameterized Constructor
     public FlipFitGymOwner(int userId, String name, String email, String password, String role,
                            String address, List<String> gymNames, String aadhaarNumber, String panNumber,
                            String governmentDocument) {
