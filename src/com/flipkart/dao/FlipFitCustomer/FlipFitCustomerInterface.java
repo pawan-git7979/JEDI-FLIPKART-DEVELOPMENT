@@ -14,4 +14,5 @@ public interface FlipFitCustomerInterface {
     List<FlipFitBooking> getUserBookings(int userId);
     List<FlipFitPayment> getUserPayments(int userId);
     List<FlipFitNotification> getUserNotifications(int userId);
+
 }

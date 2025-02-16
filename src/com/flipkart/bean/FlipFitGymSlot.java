@@ -12,18 +12,20 @@ public class FlipFitGymSlot {
     private int numOfSeats;
     private int numOfSeatsBooked;
     private Queue<Integer> waitlistBookingIds; // Queue for FIFO ordering
+    private int amount;
 
-    public FlipFitGymSlot() {
-        this.waitlistBookingIds = new LinkedList<>();
-    }
+//    public FlipFitGymSlot() {
+//        this.waitlistBookingIds = new LinkedList<>();
+//    }
 
     public FlipFitGymSlot(int slotId, int gymId, String startTime, String endTime,
-                          String trainer, int numOfSeats, int numOfSeatsBooked) {
+                           int amount,int numOfSeats, int numOfSeatsBooked) {
         this.slotId = slotId;
         this.gymId = gymId;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.trainer = trainer;
+        this.amount=amount;
+//        this.trainer = trainer;
         this.numOfSeats = numOfSeats;
         this.numOfSeatsBooked = numOfSeatsBooked;
         this.waitlistBookingIds = new LinkedList<>();
@@ -49,6 +51,9 @@ public class FlipFitGymSlot {
 
     public int getNumOfSeatsBooked() { return numOfSeatsBooked; }
     public void setNumOfSeatsBooked(int numOfSeatsBooked) { this.numOfSeatsBooked = numOfSeatsBooked; }
+
+    public int getAmount(){return amount;}
+    public void setAmount(int amount){this.amount=amount;}
 
     public Queue<Integer> getWaitlistBookingIds() { return waitlistBookingIds; }
     public void setWaitlistBookingIds(Queue<Integer> waitlistBookingIds) { this.waitlistBookingIds = waitlistBookingIds; }

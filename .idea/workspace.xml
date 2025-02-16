@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitPaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitPaymentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/FlipFitDBUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/FlipFitDBUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -94,7 +94,8 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                         rs.getInt("gymId"),
                         rs.getString("startTime"),
                         rs.getString("endTime"),
-                        rs.getString("trainer"),
+//                        rs.getString("trainer"),
+                        rs.getInt("amount"),
                         rs.getInt("numOfSeats"),
                         rs.getInt("numOfSeatsBooked") // ✅ Remove the extra null argument
                 ));
@@ -117,6 +118,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public FlipFitBooking bookSlot(int userId, int gymId, int slotId) {
