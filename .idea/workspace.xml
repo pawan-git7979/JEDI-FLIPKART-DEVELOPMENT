@@ -6,30 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/constant/BookingStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/constant/PaymentStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/constant/UserRoles.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitAdmin/FlipFitAdminImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitAdmin/FlipFitAdminImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitBooking/FlipFitBookingImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitBooking/FlipFitBookingImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitGymCenter/FlipFitGymCenterImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitGymCenter/FlipFitGymCenterImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitGymOwner/FlipFitGymOwnerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitGymOwner/FlipFitGymOwnerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitPayment/FlipFitPaymentImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitPayment/FlipFitPaymentImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/BookingStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/BookingStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/PaymentStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/PaymentStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/UserRoles.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constant/UserRoles.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitAdmin/FlipFitAdminImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitAdmin/FlipFitAdminImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitBooking/FlipFitBookingImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitBooking/FlipFitBookingImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitGymCenter/FlipFitGymCenterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitGymCenter/FlipFitGymCenterImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitGymOwner/FlipFitGymOwnerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitGymOwner/FlipFitGymOwnerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitPayment/FlipFitPaymentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitPayment/FlipFitPaymentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +54,7 @@
     "Application.TestDBConnection.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "newtry",
+    "git-widget-placeholder": "ajiteshFinal",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -136,7 +113,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739689774029</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1739730579259</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1739730579259</updated>
+    </task>
+    <task id="LOCAL-00003" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1739730591209</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739730591209</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
