@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymOwner.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymOwner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitGymOwner/FlipFitGymOwnerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitGymOwner/FlipFitGymOwnerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymOwner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,19 +39,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.FlipFitApplicationMenu.executor": "Run",
-    "Application.TestDBConnection.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "newtry",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FlipFitApplicationMenu.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestDBConnection.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;newtry&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.FlipFitApplicationMenu">
     <configuration name="FlipFitApplicationMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flipkart.client.FlipFitApplicationMenu" />

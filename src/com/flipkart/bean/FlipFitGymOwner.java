@@ -13,6 +13,9 @@ public class FlipFitGymOwner extends FlipFitUser {
         super();
         this.gymNames = new ArrayList<>();
     }
+//    public FlipFitGymOwner(int ownerId, String name, String email, String password, String owner, String address, List<String> gymNames, String aadhaarNumber, String panNumber, String governmentDocument) {
+//
+//    }
 
     public FlipFitGymOwner(int userId, String name, String email, String password, String address,
                            List<String> gymNames, String aadhaarNumber, String panNumber,
@@ -24,8 +27,7 @@ public class FlipFitGymOwner extends FlipFitUser {
         this.governmentDocument = governmentDocument;
     }
 
-    public FlipFitGymOwner(int ownerId, String name, String email, String password, String owner, String address, List<String> gymNames, String aadhaarNumber, String panNumber, String governmentDocument) {
-    }
+
 
     // Getters and Setters
     public List<String> getGymNames() { return gymNames; }

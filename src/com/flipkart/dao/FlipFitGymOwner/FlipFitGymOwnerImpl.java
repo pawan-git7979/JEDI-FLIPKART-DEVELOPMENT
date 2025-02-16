@@ -94,19 +94,21 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean addGymCenter(FlipFitGymCenter gym) {
-        String query = "INSERT INTO FlipFitGymCenter (name, location, owner_id, admin_id, status) VALUES (?, ?, ?, ?, 'PENDING')";
+        String query = "INSERT INTO FlipFitGymCenter (name, location, ownerId, adminId) VALUES (?, ?, ?, ?)";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, gym.getName());
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getOwnerId());
             stmt.setInt(4, gym.getAdminId());
+            System.out.println(stmt);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
 
     @Override
     public boolean updateGymInfo(FlipFitGymCenter gym) {
