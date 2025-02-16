@@ -14,7 +14,8 @@ public class FlipFitAdminMenu {
             System.out.println("1. View & Process Pending Gym  Requests");
             System.out.println("2. View All Gym Customers");
             System.out.println("3. View All Gym Owners");
-            System.out.println("4. Logout");
+            System.out.println("4. View All Gym Centers");
+            System.out.println("5. Logout");
 
             int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
@@ -29,6 +30,9 @@ public class FlipFitAdminMenu {
                     adminService.viewAllGymOwners();
                     break;
                 case 4:
+                    adminService.viewAllGyms();
+                    break;
+                case 5:
                     exit = true;
                     System.out.println("Logging out...");
                     break;

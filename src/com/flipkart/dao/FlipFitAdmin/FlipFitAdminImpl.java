@@ -175,4 +175,29 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         return gymNames;
     }
 
+    public List<String> getAllGyms() {
+        List<String> gyms = new ArrayList<>();
+        String query = """
+        SELECT name, location 
+        FROM FlipFitGymCenter
+        WHERE status = 'APPROVED'
+    """;
+
+        try (Connection conn = FlipFitDBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (!rs.isBeforeFirst()) {
+                System.out.println("No gyms found.");
+            }
+
+            while (rs.next()) {
+                gyms.add("Name: " + rs.getString("name") + " | Location: " + rs.getString("location"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return gyms;
+    }
+
 }

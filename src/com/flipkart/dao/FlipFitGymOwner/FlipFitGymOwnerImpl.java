@@ -112,7 +112,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean updateGymInfo(FlipFitGymCenter gym) {
-        String query = "UPDATE FlipFitGymCenter SET name = ?, location = ? WHERE id = ?";
+        String query = "UPDATE FlipFitGymCenter SET name = ?, location = ? WHERE gymId = ?";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, gym.getName());
@@ -127,8 +127,8 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats) {
-        String query = "INSERT INTO gym_slots (gym_id, start_time, end_time, seats) VALUES (?, ?, ?, ?) " +
-                "ON DUPLICATE KEY UPDATE start_time = ?, end_time = ?, seats = ?";
+        String query = "INSERT INTO FlipFitGymSlot (gymId, startTime, endTime, numOfSeats) VALUES (?, ?, ?, ?) " +
+                "ON DUPLICATE KEY UPDATE startTime = ?, endTime = ?, numOfSeats = ?";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, gymId);
@@ -148,7 +148,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
     @Override
     public List<String> viewBookings(int ownerId) {
         List<String> bookings = new ArrayList<>();
-        String query = "SELECT * FROM bookings WHERE gym_id IN (SELECT id FROM gym_centers WHERE owner_id = ?)";
+        String query = "SELECT * FROM FlipFitBooking WHERE centerId IN (SELECT gymId FROM FlipFitGymCenter WHERE ownerId = ?)";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, ownerId);

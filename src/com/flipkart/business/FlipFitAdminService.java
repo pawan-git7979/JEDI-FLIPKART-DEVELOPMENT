@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FlipFitAdminService {
-    private FlipFitAdminInterface adminDAO = new FlipFitAdminImpl();
+    private FlipFitAdminImpl adminDAO = new FlipFitAdminImpl();
 
     public void processPendingGymOwnerRequests(Scanner scanner) {
         List<FlipFitGymOwner> pendingOwners = adminDAO.getPendingGymOwnerRequests();
@@ -50,8 +50,8 @@ public class FlipFitAdminService {
 
         for (String customer : customers) {
             System.out.println(customer);
+        }
     }
-}
 
     public void viewAllGymOwners() {
 //        System.out.println("Fetching all gym owners..."); // Placeholder
@@ -64,6 +64,19 @@ public class FlipFitAdminService {
         for (String owner : owners) {
             System.out.println(owner);
 //            System.out.println();
+        }
+    }
+
+    public void viewAllGyms() {
+//        System.out.println("Fetching all gym centers..."); // Placeholder
+        List<String> gyms = adminDAO.getAllGyms();
+        if (gyms.isEmpty()) {
+            System.out.println("No gym centers found.");
+            return;
+        }
+
+        for (String gym : gyms) {
+            System.out.println(gym);
         }
     }
 }

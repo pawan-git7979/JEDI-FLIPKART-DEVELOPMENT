@@ -9,4 +9,6 @@ public interface FlipFitAdminInterface {
     boolean rejectGymOwner(int ownerId);
     List<String> getAllCustomers();
     List<String> getAllOwners();
+
+    List<String> getAllGyms();
 }
