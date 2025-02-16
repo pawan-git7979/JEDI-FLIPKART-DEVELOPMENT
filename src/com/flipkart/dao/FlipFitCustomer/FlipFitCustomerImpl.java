@@ -10,22 +10,33 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
 
 
-        public boolean registerGymCustomer(FlipFitGymCustomer customer) {
-            try (Connection conn = FlipFitDBUtil.getConnection()) {
-                String insertQuery = "INSERT INTO FlipFitGymCustomer (customerId, governmentDocumentNumber) VALUES (?, ?)";
+    public boolean registerGymCustomer(FlipFitGymCustomer customer) {
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
+            conn.setAutoCommit(false);
 
-                try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
-                    stmt.setInt(1, customer.getUserId());
-                    stmt.setString(2, customer.getGovernmentDocumentNumber());
+            String query = "INSERT INTO FlipFitGymCustomer (userId, governmentDocumentNumber) VALUES (?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setInt(1, customer.getUserId());
+                stmt.setString(2, customer.getGovernmentDocumentNumber());
 
-                    int rowsAffected = stmt.executeUpdate();
-                    return rowsAffected > 0;
+                int affectedRows = stmt.executeUpdate();
+                if (affectedRows == 0) {
+                    System.out.println("❌ ERROR: Customer insertion failed!");
+                    conn.rollback();  // Rollback transaction on failure
+                    return false;
                 }
+                conn.commit(); // Commit the transaction
+                return true;
             } catch (SQLException e) {
-                e.printStackTrace();
-                return false;
+                conn.rollback();  // Ensure rollback on any exception
+                throw e;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
+    }
+
 
 
     @Override

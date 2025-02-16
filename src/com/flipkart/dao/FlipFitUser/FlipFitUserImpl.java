@@ -21,6 +21,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
             conn.setAutoCommit(false); // Start transaction
 
+            // Insert into FlipFitUser table
             String userInsertQuery = "INSERT INTO FlipFitUser (name, email, password, role, address) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement userStmt = conn.prepareStatement(userInsertQuery, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -32,64 +33,68 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
 
                 int affectedRows = userStmt.executeUpdate();
                 if (affectedRows == 0) {
-                    conn.rollback();  // Rollback on user insert failure
+                    System.out.println("❌ ERROR: User insertion failed!");
                     return false;
                 }
 
                 ResultSet generatedKeys = userStmt.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    user.setUserId(generatedKeys.getInt(1));
+                    int generatedUserId = generatedKeys.getInt(1);
+                    user.setUserId(generatedUserId);
+                    System.out.println("✅ User inserted successfully with userId: " + generatedUserId);
                 } else {
-                    conn.rollback(); // Rollback if no generated key
+                    System.out.println("❌ ERROR: No generated key found for user!");
                     return false;
                 }
             }
 
+            // Commit user insertion immediately
+            conn.commit();
+            System.out.println("📌 User record committed successfully!");
+
             boolean roleInsertSuccess = false;
 
+            // Insert into respective role-specific table
             if ("CUSTOMER".equals(user.getRole())) {
                 FlipFitCustomerImpl customerDAO = new FlipFitCustomerImpl();
                 FlipFitGymCustomer customer = new FlipFitGymCustomer();
                 customer.setUserId(user.getUserId());
-                System.out.println("=== Please Enter some important Gym Customer Details");
-                String uInput=FlipFitIOUtils.getStringInput("Enter Government Document Number: ", new Scanner(System.in));
-                System.out.println(uInput);
+
+                System.out.println("=== Please Enter some important Gym Customer Details ===");
+                String uInput = FlipFitIOUtils.getStringInput("Enter Government Document Number: ", new Scanner(System.in));
+                System.out.println("📌 Received Government Document Number: " + uInput);
                 customer.setGovernmentDocumentNumber(uInput);
-                System.out.println("done till settings");
+
+                System.out.println("📌 Registering customer with userId: " + customer.getUserId());
                 roleInsertSuccess = customerDAO.registerGymCustomer(customer);
-                System.out.println("Done till success flag");
+
             } else if ("OWNER".equals(user.getRole())) {
                 FlipFitGymOwnerImpl ownerDAO = new FlipFitGymOwnerImpl();
                 FlipFitGymOwner owner = new FlipFitGymOwner();
                 owner.setUserId(user.getUserId());
 
-
-                //owner.setAadhaarNumber(FlipFitIOUtils.getStringInput("Enter Aadhaar Number: ", scanner));
-                //owner.setPanNumber(FlipFitIOUtils.getStringInput("Enter PAN Number: ", scanner));
-                //owner.setGovernmentDocument(FlipFitIOUtils.getStringInput("Enter Government Document: ", scanner));
-
                 System.out.print("Enter Aadhaar Number: ");
-                String aadhaar = scanner.nextLine(); // Use nextLine() consistently
+                String aadhaar = new Scanner(System.in).nextLine();
                 owner.setAadhaarNumber(aadhaar);
 
                 System.out.print("Enter PAN Number: ");
-                String pan = scanner.nextLine();    // Use nextLine() consistently
+                String pan = new Scanner(System.in).nextLine();
                 owner.setPanNumber(pan);
 
                 System.out.print("Enter Government Document: ");
-                String document = scanner.next(); // Use nextLine() consistently
+                String document = new Scanner(System.in).nextLine();
                 owner.setGovernmentDocument(document);
 
-
+                System.out.println("📌 Registering gym owner with userId: " + owner.getUserId());
                 roleInsertSuccess = ownerDAO.registerGymOwner(owner);
             }
 
             if (!roleInsertSuccess) {
-                conn.rollback();
-                return false;
+                System.out.println("⚠️ WARNING: Role-specific insertion failed! User is still registered in the system.");
+            } else {
+                System.out.println("✅ User and Role registered successfully!");
             }
 
-            conn.commit(); // Commit transaction if everything is successful
             return true;
 
         } catch (Exception e) {
@@ -99,8 +104,7 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
     }
 
 
-
-@Override
+    @Override
 public FlipFitUser getUserById(int userId) {
     FlipFitUser user = null;
     try (Connection conn = FlipFitDBUtil.getConnection()) {
