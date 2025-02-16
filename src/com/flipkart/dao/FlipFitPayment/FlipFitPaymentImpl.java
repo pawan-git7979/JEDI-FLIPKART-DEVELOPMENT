@@ -8,7 +8,7 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
 
     @Override
     public boolean processPayment(FlipFitPayment payment) {
-        String query = "INSERT INTO payments (user_id, amount, status) VALUES (?, ?, ?)";
+        String query = "INSERT INTO FlipFitPayment (userId, amount, status) VALUES (?, ?, ?)";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 

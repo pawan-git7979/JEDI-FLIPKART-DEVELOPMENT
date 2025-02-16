@@ -65,12 +65,12 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 gyms.add(new FlipFitGymCenter(
-                        rs.getInt("id"),
+                        rs.getInt("gymId"),
                         rs.getString("name"),
                         rs.getString("location"),
                         rs.getInt("adminId"),
                         rs.getInt("ownerId"),
-                        rs.getString("ownerName"),
+//                        rs.getString("ownerName"),
                         null
                 ));
             }
@@ -120,8 +120,8 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
     @Override
     public FlipFitBooking bookSlot(int userId, int gymId, int slotId) {
-        String query = "INSERT INTO FlipFitBooking (userId, gymId, slotId, status) VALUES (?, ?, ?, 'BOOKED')";
-        String updateSlotQuery = "UPDATE slots SET numOfSeatsBooked = numOfSeatsBooked + 1 WHERE slotId = ?";
+        String query = "INSERT INTO FlipFitBooking (userId, centerId, slotId, status) VALUES (?, ?, ?, 'BOOKED')";
+        String updateSlotQuery = "UPDATE FlipFitGymSlot SET numOfSeatsBooked = numOfSeatsBooked + 1 WHERE slotId = ?";
 
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -169,7 +169,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                 bookings.add(new FlipFitBooking(
                         rs.getInt("bookingId"),
                         rs.getInt("userId"),
-                        rs.getInt("gymId"),
+                        rs.getInt("centerId"),
                         rs.getInt("slotId"),
                         BookingStatus.valueOf(rs.getString("status")), // ✅ Convert String to ENUM
                         rs.getInt("paymentId"),

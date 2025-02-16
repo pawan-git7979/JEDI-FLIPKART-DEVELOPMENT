@@ -13,13 +13,13 @@ public class FlipFitGymCenter {
 
     public FlipFitGymCenter() {}
 
-    public FlipFitGymCenter(int id, String name, String location, int adminId, int ownerId, String ownerName, List<FlipFitGymSlot> slots) {
+    public FlipFitGymCenter(int id, String name, String location, int adminId, int ownerId, List<FlipFitGymSlot> slots) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.adminId = adminId;
         this.ownerId = ownerId;
-        this.ownerName = ownerName;
+//        this.ownerName = ownerName;
         this.slots = slots;
     }
 
