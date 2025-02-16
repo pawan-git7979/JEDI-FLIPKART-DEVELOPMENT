@@ -17,7 +17,7 @@ public class FlipFitPaymentService {
         FlipFitPayment payment = new FlipFitPayment();
         payment.setUserId(userId);
         payment.setAmount(amount);
-        payment.setStatus("PENDING");
+        payment.setStatus("SUCCESS");
 
         boolean paymentSuccess = paymentDAO.processPayment(payment);
         if (paymentSuccess) {

@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymCenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/bean/FlipFitGymCenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitCustomer/FlipFitCustomerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/bean/FlipFitGymCenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitPaymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitPaymentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/utils/FlipFitDBUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/utils/FlipFitDBUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitPaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/utils/FlipFitDBUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "just-a-penguin"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;just-a-penguin&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/pawan-git7979/JEDI-FLIPKART-DEVELOPMENT",
-    "accountId": "26a0f1fc-7e55-4f32-98c9-f371390935e4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/pawan-git7979/JEDI-FLIPKART-DEVELOPMENT&quot;,
+    &quot;accountId&quot;: &quot;26a0f1fc-7e55-4f32-98c9-f371390935e4&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
