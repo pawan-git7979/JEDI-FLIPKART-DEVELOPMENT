@@ -11,7 +11,7 @@ public class FlipFitAdminMenu {
 
         while (!exit) {
             System.out.println("\n=== FlipFit Admin Menu ===");
-            System.out.println("1. View & Process Pending Gym Owner Requests");
+            System.out.println("1. View & Process Pending Gym  Requests");
             System.out.println("2. View All Gym Customers");
             System.out.println("3. View All Gym Owners");
             System.out.println("4. Logout");
