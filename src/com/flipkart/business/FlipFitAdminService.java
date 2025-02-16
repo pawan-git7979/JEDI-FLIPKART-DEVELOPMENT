@@ -41,10 +41,29 @@ public class FlipFitAdminService {
     }
 
     public void viewAllCustomers() {
-        System.out.println("Fetching all gym customers..."); // Placeholder
+//        System.out.println("Fetching all gym customers..."); // Placeholder
+        List<String> customers = adminDAO.getAllCustomers();
+        if (customers.isEmpty()) {
+            System.out.println("No gym customers found.");
+            return;
+        }
+
+        for (String customer : customers) {
+            System.out.println(customer);
     }
+}
 
     public void viewAllGymOwners() {
-        System.out.println("Fetching all gym owners..."); // Placeholder
+//        System.out.println("Fetching all gym owners..."); // Placeholder
+        List<String> owners = adminDAO.getAllOwners();
+        if (owners.isEmpty()) {
+            System.out.println("No gym owners found.");
+            return;
+        }
+
+        for (String owner : owners) {
+            System.out.println(owner);
+//            System.out.println();
+        }
     }
 }
