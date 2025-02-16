@@ -11,7 +11,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean registerGymOwner(FlipFitGymOwner owner) {
-        String query = "INSERT INTO gym_owners (user_id, gym_names, aadhaar_number, pan_number, government_document) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO FlipFitGymOwner (user_id, gym_names, aadhaar_number, pan_number, government_document) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, owner.getUserId());
@@ -28,7 +28,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public FlipFitGymOwner getOwnerById(int ownerId) {
-        String query = "SELECT * FROM gym_owners WHERE user_id = ?";
+        String query = "SELECT * FROM FlipFitGymOwner WHERE user_id = ?";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, ownerId);
@@ -91,7 +91,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean addGymCenter(FlipFitGymCenter gym) {
-        String query = "INSERT INTO gym_centers (name, location, owner_id, admin_id, status) VALUES (?, ?, ?, ?, 'PENDING')";
+        String query = "INSERT INTO FlipFitGymCenter (name, location, owner_id, admin_id, status) VALUES (?, ?, ?, ?, 'PENDING')";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, gym.getName());
@@ -107,7 +107,7 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
     @Override
     public boolean updateGymInfo(FlipFitGymCenter gym) {
-        String query = "UPDATE gym_centers SET name = ?, location = ? WHERE id = ?";
+        String query = "UPDATE FlipFitGymCenter SET name = ?, location = ? WHERE id = ?";
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, gym.getName());

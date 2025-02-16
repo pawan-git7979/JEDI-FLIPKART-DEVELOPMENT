@@ -11,7 +11,7 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     public boolean addGym(FlipFitGymCenter gym) {
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO gym_centers (name, location, owner_id) VALUES (?, ?, ?)")) {
+                     "INSERT INTO FlipFitGymCenter (name, location, owner_id) VALUES (?, ?, ?)")) {
             stmt.setString(1, gym.getName());
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getOwnerId());
@@ -26,7 +26,7 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     public boolean updateGymDetails(FlipFitGymCenter gym) {
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "UPDATE gym_centers SET name = ?, location = ? WHERE id = ?")) {
+                     "UPDATE FlipFitGymCenter SET name = ?, location = ? WHERE id = ?")) {
             stmt.setString(1, gym.getName());
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getId());
@@ -41,7 +41,7 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     public List<FlipFitGymCenter> getAllGyms() {
         List<FlipFitGymCenter> gyms = new ArrayList<>();
         try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM gym_centers")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM FlipFitGymCenter")) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 FlipFitGymCenter gym = new FlipFitGymCenter();
