@@ -4,35 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitAdminServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitAdminServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitAuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitAuthServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitCustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitCustomerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitGymOwnerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitGymOwnerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/BookingNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/GymNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/PaymentFailureException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/SlotNotAvailableException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/exception/UserNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAdminServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAuthServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitAuthServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitGymOwnerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitGymOwnerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/FlipFitUser/FlipFitUserImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/BookingNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/BookingNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/GymNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/GymNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/PaymentFailureException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/PaymentFailureException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/SlotNotAvailableException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/SlotNotAvailableException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/UserNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/UserNotFoundException.java" beforeDir="false" />
-    </list>
+    <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
