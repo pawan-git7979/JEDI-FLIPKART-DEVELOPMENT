@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0b4d1ebb-68b7-4800-9e8f-630743ae6d72" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitApplicationMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitApplicationMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitCustomerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitCustomerMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitGymOwnerMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/client/FlipFitGymOwnerMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitAdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitAdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitApplicationMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitApplicationMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitCustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitCustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymOwnerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/client/FlipFitGymOwnerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitCustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/flipkart/business/FlipFitCustomerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/FlipFitCustomerServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

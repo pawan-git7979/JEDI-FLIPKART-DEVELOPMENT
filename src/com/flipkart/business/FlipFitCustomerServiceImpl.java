@@ -23,7 +23,24 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
             return;
         }
 
-        int cityChoice = FlipFitIOUtils.getChoice(scanner, "Available Cities", cities);
+        // Display cities in a table format
+        System.out.println("\n===============================");
+        System.out.println("|      Available Cities       |");
+        System.out.println("===============================");
+        System.out.printf("| %-3s | %-25s |\n", "No.", "City Name");
+        System.out.println("-------------------------------");
+
+        for (int i = 0; i < cities.size(); i++) {
+            System.out.printf("| %-3d | %-25s |\n", i + 1, cities.get(i));
+        }
+        System.out.println("===============================");
+
+        int cityChoice = FlipFitIOUtils.getIntInput("Enter your choice (1-" + cities.size() + "): ", scanner);
+
+        if (cityChoice < 1 || cityChoice > cities.size()) {
+            System.out.println("Invalid choice. Returning to main menu.");
+            return;
+        }
         String selectedCity = cities.get(cityChoice - 1);
 
         // Fetch gyms
@@ -33,8 +50,32 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
             return;
         }
 
-        int gymChoice = FlipFitIOUtils.getChoice(scanner, "Available Gyms", gyms);
+        // Display gyms in a table format
+        System.out.println("\n===============================");
+        System.out.println("|        Available Gyms       |");
+        System.out.println("===============================");
+        System.out.printf("| %-3s | %-25s |\n", "No.", "Gym Name");
+        System.out.println("-------------------------------");
+
+        for (int i = 0; i < gyms.size(); i++) {
+            System.out.printf("| %-3d | %-25s |\n", i + 1, gyms.get(i).getName());
+        }
+        System.out.println("===============================");
+
+        // Use getIntInput to get the gym choice
+        int gymChoice = FlipFitIOUtils.getIntInput("Enter your choice (1-" + gyms.size() + "): ", scanner);
+
+        if (gymChoice < 1 || gymChoice > gyms.size()) {
+            System.out.println("Invalid choice. Returning to main menu.");
+            return;
+        }
+
         FlipFitGymCenter selectedGym = gyms.get(gymChoice - 1);
+
+
+
+
+
 
         // Fetch slots
         List<FlipFitGymSlot> slots = customerDAO.getAvailableSlots(selectedGym.getId());
