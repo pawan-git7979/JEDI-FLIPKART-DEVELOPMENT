@@ -1,12 +1,14 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
+
+import com.flipkart.business.FlipFitAdminServiceInterface;
 import com.flipkart.utils.FlipFitIOUtils;
-import com.flipkart.business.FlipFitAdminService;
+import com.flipkart.business.FlipFitAdminServiceImpl;
 
 public class FlipFitAdminMenu {
     public void showMenu(Scanner scanner) {
-        FlipFitAdminService adminService = new FlipFitAdminService();
+        FlipFitAdminServiceInterface adminService = new FlipFitAdminServiceImpl();
         boolean exit = false;
 
         while (!exit) {

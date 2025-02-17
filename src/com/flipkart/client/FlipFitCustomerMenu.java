@@ -1,17 +1,19 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-import com.flipkart.business.FlipFitCustomerService;
+
+import com.flipkart.business.FlipFitCustomerServiceImpl;
+import com.flipkart.business.FlipFitCustomerServiceInterface;
 import com.flipkart.utils.FlipFitIOUtils;
 
 public class FlipFitCustomerMenu {
-    private FlipFitCustomerService customerService;
+    private FlipFitCustomerServiceInterface customerService;
     private int userId;
 
-    public FlipFitCustomerMenu(int userId) { // ✅ Constructor initializes userId
-        this.customerService = new FlipFitCustomerService();
-        this.userId = userId;
-    }
+        public FlipFitCustomerMenu(int userId) { // ✅ Constructor initializes userId
+            this.customerService = new FlipFitCustomerServiceImpl(); // ✅ Use interface for loose coupling
+            this.userId = userId;
+        }
 
     public void showMenu(Scanner scanner) { // ✅ Instance method, no static
         boolean exit = false;

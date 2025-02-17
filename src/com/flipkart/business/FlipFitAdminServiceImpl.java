@@ -6,9 +6,10 @@ import com.flipkart.bean.FlipFitGymOwner;
 import java.util.List;
 import java.util.Scanner;
 
-public class FlipFitAdminService {
-    private FlipFitAdminImpl adminDAO = new FlipFitAdminImpl();
+public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
+    private FlipFitAdminInterface adminDAO = new FlipFitAdminImpl();
 
+    @Override
     public void processPendingGymOwnerRequests(Scanner scanner) {
         List<FlipFitGymOwner> pendingOwners = adminDAO.getPendingGymOwnerRequests();
 
@@ -40,8 +41,8 @@ public class FlipFitAdminService {
         }
     }
 
+    @Override
     public void viewAllCustomers() {
-//        System.out.println("Fetching all gym customers..."); // Placeholder
         List<String> customers = adminDAO.getAllCustomers();
         if (customers.isEmpty()) {
             System.out.println("No gym customers found.");
@@ -53,8 +54,8 @@ public class FlipFitAdminService {
         }
     }
 
+    @Override
     public void viewAllGymOwners() {
-//        System.out.println("Fetching all gym owners..."); // Placeholder
         List<String> owners = adminDAO.getAllOwners();
         if (owners.isEmpty()) {
             System.out.println("No gym owners found.");
@@ -63,12 +64,11 @@ public class FlipFitAdminService {
 
         for (String owner : owners) {
             System.out.println(owner);
-//            System.out.println();
         }
     }
 
+    @Override
     public void viewAllGyms() {
-//        System.out.println("Fetching all gym centers..."); // Placeholder
         List<String> gyms = adminDAO.getAllGyms();
         if (gyms.isEmpty()) {
             System.out.println("No gym centers found.");

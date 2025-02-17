@@ -2,15 +2,17 @@ package com.flipkart.client;
 
 import java.util.List;
 import java.util.Scanner;
-import com.flipkart.business.FlipFitGymOwnerService;
+
+import com.flipkart.business.FlipFitGymOwnerServiceImpl;
+import com.flipkart.business.FlipFitGymOwnerServiceInterface;
 import com.flipkart.utils.FlipFitIOUtils;
 
 public class FlipFitGymOwnerMenu {
-    private FlipFitGymOwnerService ownerService;
+    private FlipFitGymOwnerServiceInterface ownerService;
     private int userId;
 
     public FlipFitGymOwnerMenu(int userId) {
-        this.ownerService = new FlipFitGymOwnerService();
+        this.ownerService = new FlipFitGymOwnerServiceImpl();
         this.userId = userId;
     }
 

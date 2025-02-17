@@ -3,13 +3,14 @@ package com.flipkart.business;
 import java.util.List;
 import java.util.Scanner;
 import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.dao.FlipFitGymOwner.FlipFitGymOwnerInterface;
 import com.flipkart.dao.FlipFitGymOwner.FlipFitGymOwnerImpl;
 import com.flipkart.utils.FlipFitIOUtils;
 
-public class FlipFitGymOwnerService {
-    private FlipFitGymOwnerImpl ownerDAO = new FlipFitGymOwnerImpl();
+public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterface {
+    private FlipFitGymOwnerInterface ownerDAO = new FlipFitGymOwnerImpl();
 
-    // ✅ Add Gym Center
+    @Override
     public boolean addGymCenter(Scanner scanner, int ownerId) {
         System.out.println("\n=== Add a Gym Center ===");
         String gymName = FlipFitIOUtils.getStringInput("Enter Gym Name: ", scanner);
@@ -24,7 +25,7 @@ public class FlipFitGymOwnerService {
         return ownerDAO.addGymCenter(gym);
     }
 
-    // ✅ Update Gym Information
+    @Override
     public boolean updateGymInfo(Scanner scanner, int ownerId) {
         System.out.println("\n=== Update Gym Information ===");
         int gymId = FlipFitIOUtils.getIntInput("Enter Gym ID: ", scanner);
@@ -40,7 +41,7 @@ public class FlipFitGymOwnerService {
         return ownerDAO.updateGymInfo(gym);
     }
 
-    // ✅ Add or Update a Slot
+    @Override
     public boolean addOrUpdateSlot(Scanner scanner, int ownerId) {
         System.out.println("\n=== Add or Update a Slot ===");
         int gymId = FlipFitIOUtils.getIntInput("Enter Gym ID: ", scanner);
@@ -49,10 +50,10 @@ public class FlipFitGymOwnerService {
         int seats = FlipFitIOUtils.getIntInput("Enter Number of Seats: ", scanner);
         int price = FlipFitIOUtils.getIntInput("Enter Price: ", scanner);
 
-        return ownerDAO.addOrUpdateSlot(gymId, startTime, endTime, seats,price);
+        return ownerDAO.addOrUpdateSlot(gymId, startTime, endTime, seats, price);
     }
 
-    // ✅ View Bookings
+    @Override
     public List<String> viewBookings(int ownerId) {
         return ownerDAO.viewBookings(ownerId);
     }

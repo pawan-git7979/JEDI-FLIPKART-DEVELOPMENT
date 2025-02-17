@@ -1,7 +1,7 @@
 package com.flipkart.business;
 
-import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerImpl;
 import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerInterface;
+import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerImpl;
 import com.flipkart.bean.FlipFitBooking;
 import com.flipkart.bean.FlipFitPayment;
 import com.flipkart.bean.FlipFitNotification;
@@ -11,11 +11,11 @@ import com.flipkart.bean.FlipFitGymSlot;
 import java.util.List;
 import java.util.Scanner;
 
-public class FlipFitCustomerService {
+public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterface {
     private FlipFitCustomerInterface customerDAO = new FlipFitCustomerImpl();
-    private FlipFitPaymentService paymentService = new FlipFitPaymentService();
+    private FlipFitPaymentServiceInterface paymentService = new FlipFitPaymentServiceImpl();
 
-    // Book a slot
+    @Override
     public void bookSlot(Scanner scanner, int userId) {
         List<String> cities = customerDAO.getAvailableCities();
         if (cities.isEmpty()) {
@@ -40,18 +40,8 @@ public class FlipFitCustomerService {
         List<FlipFitGymSlot> slots = customerDAO.getAvailableSlots(selectedGym.getId());
         if (slots.isEmpty()) {
             System.out.println("No slots available. Adding to waitlist...");
-
-            // Add user to waitlist
             customerDAO.addToWaitlist(userId, selectedGym.getId());
             System.out.println("You have been added to the waitlist for Gym ID: " + selectedGym.getId());
-            // Insert waitlisted booking (slotId set to NULL)
-//            FlipFitBooking waitlistBooking = customerDAO.bookSlot(userId, selectedGym.getId(), 0, 0);
-//
-//            if (waitlistBooking != null) {
-//                System.out.println("You have been added to the waitlist for Gym ID: " + selectedGym.getId());
-//            } else {
-//                System.out.println("Error adding to waitlist.");
-//            }
             return;
         }
 
@@ -68,7 +58,7 @@ public class FlipFitCustomerService {
         }
     }
 
-    // View all bookings of a customer
+    @Override
     public void viewBookings(int userId) {
         List<FlipFitBooking> bookings = customerDAO.getUserBookings(userId);
         if (bookings.isEmpty()) {
@@ -86,7 +76,7 @@ public class FlipFitCustomerService {
         }
     }
 
-    // View payment information
+    @Override
     public void viewPayments(int userId) {
         List<FlipFitPayment> payments = customerDAO.getUserPayments(userId);
         if (payments.isEmpty()) {
@@ -103,8 +93,7 @@ public class FlipFitCustomerService {
         }
     }
 
-
-    // View notifications
+    @Override
     public void viewNotifications(int userId) {
         List<FlipFitNotification> notifications = customerDAO.getUserNotifications(userId);
         if (notifications.isEmpty()) {

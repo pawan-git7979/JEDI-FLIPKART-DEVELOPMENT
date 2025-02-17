@@ -6,9 +6,10 @@ import com.flipkart.dao.FlipFitUser.FlipFitUserImpl;
 import java.util.Scanner;
 import com.flipkart.utils.FlipFitIOUtils;
 
-public class FlipFitAuthService {
+public class FlipFitAuthServiceImpl implements FlipFitAuthServiceInterface {
     private FlipFitUserInterface userDAO = new FlipFitUserImpl();
 
+    @Override
     public FlipFitUser login(String email, String password) {
         FlipFitUser user = userDAO.getUserByEmail(email);
         if (user != null && user.getPassword().equals(password)) {
@@ -17,6 +18,7 @@ public class FlipFitAuthService {
         return null;
     }
 
+    @Override
     public boolean registerUser(Scanner scanner) {
         System.out.println("=== Register as Gym Customer / Gym Owner ===");
         String name = FlipFitIOUtils.getStringInput("Enter Name: ", scanner);
@@ -26,9 +28,9 @@ public class FlipFitAuthService {
         String address = FlipFitIOUtils.getStringInput("Enter Address: ", scanner);
 
         String formattedRole = "";
-        if (role.equals("customer")) {
+        if (role.equalsIgnoreCase("customer")) {
             formattedRole = "CUSTOMER";
-        } else if (role.equals("owner")) {
+        } else if (role.equalsIgnoreCase("owner")) {
             formattedRole = "OWNER";
         } else {
             System.out.println("Invalid role. Please enter 'customer' or 'owner'.");
@@ -36,8 +38,6 @@ public class FlipFitAuthService {
         }
 
         FlipFitUser newUser = new FlipFitUser(0, name, email, password, formattedRole, address);
-
-//        System.out.println("bana kya?");
 
         if (userDAO.addUser(newUser)) {
             System.out.println("Registration successful!");

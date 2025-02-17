@@ -1,14 +1,16 @@
 package com.flipkart.client;
 
 import java.util.Scanner;
-import com.flipkart.business.FlipFitAuthService;
+
+import com.flipkart.business.FlipFitAuthServiceImpl;
+import com.flipkart.business.FlipFitAuthServiceInterface;
 import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.bean.FlipFitUser;
 
 public class FlipFitApplicationMenu {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            FlipFitAuthService authService = new FlipFitAuthService(); // Create an instance
+            FlipFitAuthServiceInterface authService = new FlipFitAuthServiceImpl();
 
             boolean exit = false;
 
