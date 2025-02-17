@@ -49,7 +49,7 @@ public class FlipFitCustomerMenu {
                     customerService.bookSlot(scanner, userId);
                     break;
                 case 2:
-                    customerService.viewBookings(userId,scanner);
+                    customerService.viewBookings(userId);
                     break;
                 case 3:
                     customerService.viewPayments(userId);

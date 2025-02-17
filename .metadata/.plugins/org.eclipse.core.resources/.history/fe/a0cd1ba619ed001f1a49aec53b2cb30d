@@ -10,7 +10,8 @@ public class SQLQueries {
         JOIN FlipFitUser u ON o.ownerId = u.userId
         WHERE gc.status = 'PENDING'
     """;
-    
+    public static final String DELETE_BOOKING = "DELETE FROM bookings WHERE bookingId = ?;";
+
     public static final String APPROVE_GYM_OWNER =
             "UPDATE FlipFitGymCenter SET status = 'APPROVED' WHERE ownerId = ?";
 
@@ -47,13 +48,13 @@ public class SQLQueries {
 
     // FlipFitBooking Queries
     public static final String GET_BOOKING_BY_ID =
-            "SELECT * FROM FlipFitBooking WHERE bookingId = ?";
+            "SELECT * FROM FlipFitBooking WHERE id = ?";
 
     public static final String GET_BOOKINGS_BY_USER =
             "SELECT * FROM FlipFitBooking WHERE user_id = ?";
 
     public static final String CANCEL_BOOKING =
-            "DELETE FROM FlipFitBooking WHERE bookingId = ?";
+            "DELETE FROM FlipFitBooking WHERE id = ?";
 
 
     // FlipFitCustomer Queries

@@ -222,20 +222,6 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
     }
 
 
-
-    @Override
-    public boolean deleteBooking(int bookingId) {
-        String query = SQLQueries.CANCEL_BOOKING;
-        try (Connection conn = FlipFitDBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, bookingId);
-            int affectedRows = stmt.executeUpdate();
-            return affectedRows > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
     @Override
     public List<FlipFitPayment> getUserPayments(int userId) {
         List<FlipFitPayment> payments = new ArrayList<>();

@@ -16,7 +16,7 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
     private FlipFitCustomerInterface customerDAO = new FlipFitCustomerImpl();
     private FlipFitPaymentServiceInterface paymentService = new FlipFitPaymentServiceImpl();
 
-  @Override
+  
     public void viewBookings(int userId, Scanner scanner) {
         try {
             List<FlipFitBooking> bookings = customerDAO.getUserBookings(userId);
@@ -54,7 +54,7 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
             System.out.println("⚠️ Error: " + e.getMessage());
         }
     }
-
+}
     @Override
     public void viewPayments(int userId) {
         try {

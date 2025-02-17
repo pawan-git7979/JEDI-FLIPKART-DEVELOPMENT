@@ -225,7 +225,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
     @Override
     public boolean deleteBooking(int bookingId) {
-        String query = SQLQueries.CANCEL_BOOKING;
+        String query = SQLQueries.DELETE_BOOKING;
         try (Connection conn = FlipFitDBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setInt(1, bookingId);

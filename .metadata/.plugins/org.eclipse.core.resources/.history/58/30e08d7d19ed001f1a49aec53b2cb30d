@@ -54,7 +54,7 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
             System.out.println("⚠️ Error: " + e.getMessage());
         }
     }
-
+}
     @Override
     public void viewPayments(int userId) {
         try {
