@@ -1,6 +1,7 @@
 package com.flipkart.dao.FlipFitUser;
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.flipkart.bean.FlipFitGymCustomer;
 import com.flipkart.bean.FlipFitGymOwner;
@@ -13,6 +14,7 @@ import com.flipkart.utils.FlipFitIOUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class FlipFitUserImpl implements FlipFitUserInterface {
@@ -172,7 +174,9 @@ public List<FlipFitUser> getAllUsers() {
     } catch (Exception e) {
         e.printStackTrace();
     }
-    return users;
+    return users.stream()
+            .sorted(Comparator.comparing(FlipFitUser::getName)) // ✅ Sort by gym name
+            .collect(Collectors.toList());
 }
 
 @Override

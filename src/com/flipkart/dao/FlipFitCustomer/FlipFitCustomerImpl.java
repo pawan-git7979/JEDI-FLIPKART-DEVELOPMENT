@@ -5,7 +5,9 @@ import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
 
@@ -53,7 +55,9 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return cities;
+        return cities.stream()
+                .sorted() // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -78,7 +82,9 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return gyms;
+        return gyms.stream()
+                .sorted(Comparator.comparing(FlipFitGymCenter::getName)) // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -105,7 +111,9 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return slots;
+        return slots.stream()
+                .sorted(Comparator.comparing(FlipFitGymSlot::getStartTime)) // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
 
@@ -208,7 +216,9 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return bookings;
+        return bookings.stream()
+                .sorted(Comparator.comparing(FlipFitBooking::getBookingTime)) // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
 

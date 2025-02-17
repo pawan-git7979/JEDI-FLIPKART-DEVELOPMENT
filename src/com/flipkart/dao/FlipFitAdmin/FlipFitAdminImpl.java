@@ -4,7 +4,10 @@ import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.flipkart.constant.SQLQueries; // ✅ Import query constants
 
 public class FlipFitAdminImpl implements FlipFitAdminInterface {
@@ -91,7 +94,9 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return customers;
+        return customers.stream()
+                .sorted() // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -113,7 +118,9 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return owners;
+        return owners.stream()
+                .sorted() // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
     private List<String> getGymNamesByOwnerId(int ownerId, Connection conn) {
@@ -140,7 +147,9 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return gymNames;
+        return gymNames.stream()
+                .sorted() // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -162,6 +171,9 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return gyms;
+        return gyms.stream()
+        		 .map(String::toUpperCase) 
+                .sorted() // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 }

@@ -5,7 +5,9 @@ import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
     @Override
@@ -52,6 +54,8 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return gyms;
+        return gyms.stream()
+                .sorted(Comparator.comparing(FlipFitGymCenter::getName)) // ✅ Sort by gym name
+                .collect(Collectors.toList());
     }
 }
