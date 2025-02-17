@@ -2,7 +2,7 @@ package com.flipkart.business;
 
 import com.flipkart.dao.FlipFitAdmin.FlipFitAdminInterface;
 import com.flipkart.dao.FlipFitAdmin.FlipFitAdminImpl;
-import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitGymCenter;
 import java.util.List;
 import java.util.Scanner;
 import com.flipkart.exception.AdminException;
@@ -21,35 +21,34 @@ public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
      * Processes pending gym owner requests and asks the admin to approve or reject each request.
      * @param scanner A Scanner object to read the admin's decision.
      */
-    @Override
-    public void processPendingGymOwnerRequests(Scanner scanner) {
-        List<FlipFitGymOwner> pendingOwners = adminDAO.getPendingGymOwnerRequests();
+    public void processPendingGymCenterRequests(Scanner scanner) {
+        List<FlipFitGymCenter> pendingGymCenters = adminDAO.getPendingGymCenterRequests();
 
-        if (pendingOwners.isEmpty()) {
-            System.out.println("No pending gym owner requests.");
+        if (pendingGymCenters.isEmpty()) {
+            System.out.println("No pending gym center requests.");
             return;
         }
 
-        // Loop through each pending owner request
-        pendingOwners.forEach(owner -> {
-            System.out.println("Owner ID: " + owner.getUserId() + " | Name: " + owner.getName());
+        // Loop through each pending gym center request
+        pendingGymCenters.forEach(gymCenter -> {
+            System.out.println("Gym ID: " + gymCenter.getId() + " | Gym Name: " + gymCenter.getName());
             System.out.println("Approve (A) or Reject (R)? ");
             String decision = scanner.next().trim().toUpperCase();
 
             try {
-                // If the decision is to approve the owner
+                // If the decision is to approve the gym center
                 if (decision.equals("A")) {
-                    if (!adminDAO.approveGymOwner(owner.getUserId())) {
-                        throw new AdminException("Error approving owner with ID: " + owner.getUserId());
+                    if (!adminDAO.approveGymCenter(gymCenter.getId())) {
+                        throw new AdminException("Error approving gym center with ID: " + gymCenter.getId());
                     }
-                    System.out.println("Gym Owner Approved.");
+                    System.out.println("Gym Center Approved.");
                 }
-                // If the decision is to reject the owner
+                // If the decision is to reject the gym center
                 else if (decision.equals("R")) {
-                    if (!adminDAO.rejectGymOwner(owner.getUserId())) {
-                        throw new AdminException("Error rejecting owner with ID: " + owner.getUserId());
+                    if (!adminDAO.rejectGymCenter(gymCenter.getId())) {
+                        throw new AdminException("Error rejecting gym center with ID: " + gymCenter.getId());
                     }
-                    System.out.println("Gym Owner Rejected.");
+                    System.out.println("Gym Center Rejected.");
                 }
                 // If the input is invalid
                 else {

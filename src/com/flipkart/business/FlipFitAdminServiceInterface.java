@@ -12,7 +12,7 @@ public interface FlipFitAdminServiceInterface {
      * Processes pending gym owner requests, allowing the admin to approve or reject them.
      * @param scanner Scanner object to capture user input for approving or rejecting gym owner requests.
      */
-    void processPendingGymOwnerRequests(Scanner scanner);
+    void processPendingGymCenterRequests(Scanner scanner);
 
     /**
      * Displays a list of all gym customers.

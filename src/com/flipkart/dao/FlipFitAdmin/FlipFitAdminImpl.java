@@ -1,6 +1,6 @@
 package com.flipkart.dao.FlipFitAdmin;
 
-import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,80 +19,59 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
      *
      * @return List of pending gym owner requests.
      */
-    @Override
-    public List<FlipFitGymOwner> getPendingGymOwnerRequests() {
-        List<FlipFitGymOwner> owners = new ArrayList<>();
-        try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = SQLQueries.GET_PENDING_GYM_OWNER_REQUESTS;
+	public List<FlipFitGymCenter> getPendingGymCenterRequests() {
+	    List<FlipFitGymCenter> gymCenters = new ArrayList<>();
+	    try (Connection conn = FlipFitDBUtil.getConnection()) {
+	        String query = SQLQueries.GET_PENDING_GYM_CENTER_REQUESTS;
 
-            PreparedStatement stmt = conn.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
+	        PreparedStatement stmt = conn.prepareStatement(query);
+	        ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                int ownerId = rs.getInt("userId");
-                List<String> gymNames = getGymNamesByOwnerId(ownerId, conn);
+	        while (rs.next()) {
+	            int gymId = rs.getInt("gymId");
 
-                owners.add(new FlipFitGymOwner(
-                        ownerId,
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("password"),
-                        rs.getString("address"),
-                        gymNames,
-                        rs.getString("aadhaarNumber"),
-                        rs.getString("panNumber"),
-                        rs.getString("governmentDocument")
-                ));
-            }
+	            gymCenters.add(new FlipFitGymCenter(
+	            		  rs.getInt("gymId"),
+	                        rs.getString("name"),
+	                        rs.getString("location"),
+	                        rs.getInt("adminId"),
+	                        rs.getInt("ownerId"),
+	                        null
+	                 
+	                  
+	                  
+	            ));
+	        }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return owners;
-    }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return gymCenters;
+	}
 
-    /**
-     * Approves a gym owner by updating their status in the database.
-     *
-     * @param ownerId The ID of the gym owner to approve.
-     * @return true if the owner was successfully approved, false otherwise.
-     */
-    @Override
-    public boolean approveGymOwner(int ownerId) {
-        try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String query = SQLQueries.APPROVE_GYM_OWNER;
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(1, ownerId);
-            return stmt.executeUpdate() > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+	public boolean approveGymCenter(int gymId) {
+	    try (Connection conn = FlipFitDBUtil.getConnection()) {
+	        String query = SQLQueries.APPROVE_GYM_CENTER;
+	        PreparedStatement stmt = conn.prepareStatement(query);
+	        stmt.setInt(1, gymId);
+	        return stmt.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 
-    /**
-     * Rejects a gym owner by deleting their gym centers and their record from the database.
-     *
-     * @param ownerId The ID of the gym owner to reject.
-     * @return true if the owner was successfully rejected, false otherwise.
-     */
-    @Override
-    public boolean rejectGymOwner(int ownerId) {
-        try (Connection conn = FlipFitDBUtil.getConnection()) {
-            String deleteGymsQuery = SQLQueries.DELETE_GYMS_BY_OWNER;
-            PreparedStatement stmt1 = conn.prepareStatement(deleteGymsQuery);
-            stmt1.setInt(1, ownerId);
-            stmt1.executeUpdate();
-
-            String deleteOwnerQuery = SQLQueries.DELETE_GYM_OWNER;
-            PreparedStatement stmt2 = conn.prepareStatement(deleteOwnerQuery);
-            stmt2.setInt(1, ownerId);
-            return stmt2.executeUpdate() > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+	public boolean rejectGymCenter(int gymId) {
+	    try (Connection conn = FlipFitDBUtil.getConnection()) {
+	        String query = SQLQueries.DELETE_GYM_CENTER;
+	        PreparedStatement stmt = conn.prepareStatement(query);
+	        stmt.setInt(1, gymId);
+	        return stmt.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 
     /**
      * Retrieves a list of all customers in the system.

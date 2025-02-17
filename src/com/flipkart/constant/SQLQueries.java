@@ -21,6 +21,20 @@ public class SQLQueries {
         WHERE gc.status = 'PENDING'
     """;
 
+ // Updated SQL query to get pending gym center requests
+    public static final String GET_PENDING_GYM_CENTER_REQUESTS = """
+        SELECT * FROM FlipFitGymCenter gc
+        
+        WHERE gc.status = 'PENDING'
+    """;
+
+    // Updated SQL query to approve a gym center
+    public static final String APPROVE_GYM_CENTER =
+            "UPDATE FlipFitGymCenter SET status = 'APPROVED' WHERE gymId = ?";
+
+    // Updated SQL query to reject a gym center
+    public static final String DELETE_GYM_CENTER =
+            "DELETE FROM FlipFitGymCenter WHERE gymId = ?";
 
     /**
      * SQL query to approve a gym owner's request.
@@ -73,6 +87,10 @@ public class SQLQueries {
      */
     public static final String GET_GYM_NAMES_BY_OWNER =
             "SELECT name FROM FlipFitGymCenter WHERE ownerId = ?";
+    public static final String GET_GYM_ID_BY_OWNER =
+            "SELECT * FROM FlipFitGymCenter WHERE ownerId = ?";
+    
+    
 
     /**
      * SQL query to fetch all approved gyms.
@@ -115,13 +133,10 @@ public class SQLQueries {
      * SQL query to fetch available cities for gyms.
      */
     public static final String GET_AVAILABLE_CITIES =
-            "SELECT DISTINCT location FROM FlipFitGymCenter";
+            "SELECT DISTINCT location FROM FlipFitGymCenter WHERE status = 'APPROVED'";
 
-    /**
-     * SQL query to fetch gyms in a specific city.
-     */
     public static final String GET_GYMS_BY_CITY =
-            "SELECT * FROM FlipFitGymCenter WHERE location = ?";
+            "SELECT * FROM FlipFitGymCenter WHERE location = ? AND status = 'APPROVED'";
 
     /**
      * SQL query to fetch available gym slots for a specific gym.

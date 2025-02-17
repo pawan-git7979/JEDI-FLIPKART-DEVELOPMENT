@@ -2,6 +2,8 @@ package com.flipkart.dao.FlipFitGymOwner;
 
 import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.bean.FlipFitGymCenter;
+
+import java.sql.Connection;
 import java.util.List;
 
 public interface FlipFitGymOwnerInterface {
@@ -72,4 +74,5 @@ public interface FlipFitGymOwnerInterface {
      * @return A list of strings representing the booking details for the gym owner.
      */
     List<String> viewBookings(int ownerId);
+    List<String>getAllGymsByOwner(int ownerId);
 }

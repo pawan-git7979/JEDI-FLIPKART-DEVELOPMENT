@@ -7,6 +7,7 @@ import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
@@ -184,6 +185,50 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
             e.printStackTrace();
         }
         return false;
+    }
+    
+ 
+
+
+    
+    @Override
+    public List<String> getAllGymsByOwner(int ownerId) {
+        List<String> gyms = new ArrayList<>();
+
+        // Directly obtain the connection from FlipFitDBUtil
+        try (Connection conne = FlipFitDBUtil.getConnection()) {
+
+            if (conne == null) {
+                System.out.println("Database connection is null. Check FlipFitDBUtil.getConnection()");
+                return gyms;
+            }
+
+            // SQL query to get gyms by ownerId
+            String query = SQLQueries.GET_GYM_ID_BY_OWNER;
+
+            try (PreparedStatement stmt = conne.prepareStatement(query)) {
+                stmt.setInt(1, ownerId); // Set ownerId as a parameter in the query
+                ResultSet rs = stmt.executeQuery();
+
+                if (!rs.isBeforeFirst()) {
+                    System.out.println("No gyms found.");
+                }
+
+                // Collect gym information
+                while (rs.next()) {
+                    gyms.add("ID: " + rs.getInt("gymId") + " | Name: " + rs.getString("name") + " | Location: " + rs.getString("location"));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Sort gyms alphabetically by gym name
+        return gyms.stream()
+                   .sorted() // Sort by gym name
+                   .collect(Collectors.toList());
     }
 
     /**

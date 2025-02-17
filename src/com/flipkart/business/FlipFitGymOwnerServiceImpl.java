@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.dao.FlipFitGymOwner.FlipFitGymOwnerInterface;
 import com.flipkart.dao.FlipFitGymOwner.FlipFitGymOwnerImpl;
+import com.flipkart.utils.FlipFitDBUtil;
 import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.exception.GymOwnerException;
 
@@ -59,6 +60,18 @@ public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterfa
     public boolean updateGymInfo(Scanner scanner, int ownerId) {
         try {
             System.out.println("\n=== Update Gym Information ===");
+ List<String> gyms = ownerDAO.getAllGymsByOwner(ownerId);
+            
+            if (gyms.isEmpty()) {
+                System.out.println("No gyms found for this owner.");
+                return false;
+            }
+            
+            // Display gym information
+            System.out.println("Available Gyms:");
+            gyms.forEach(System.out::println);
+            
+            
             int gymId = FlipFitIOUtils.getIntInput("Enter Gym ID: ", scanner);
             String newName = FlipFitIOUtils.getStringInput("Enter New Gym Name: ", scanner);
             String newLocation = FlipFitIOUtils.getStringInput("Enter New Location: ", scanner);
@@ -92,6 +105,18 @@ public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterfa
     public boolean addOrUpdateSlot(Scanner scanner, int ownerId) {
         try {
             System.out.println("\n=== Add or Update a Slot ===");
+            
+            List<String> gyms = ownerDAO.getAllGymsByOwner(ownerId);
+            
+            if (gyms.isEmpty()) {
+                System.out.println("No gyms found for this owner.");
+                return false;
+            }
+            
+            // Display gym information
+            System.out.println("Available Gyms:");
+            gyms.forEach(System.out::println);
+            
             int gymId = FlipFitIOUtils.getIntInput("Enter Gym ID: ", scanner);
             String startTime = FlipFitIOUtils.getStringInput("Enter Slot Start Time (HH:MM): ", scanner);
             String endTime = FlipFitIOUtils.getStringInput("Enter Slot End Time (HH:MM): ", scanner);
@@ -110,7 +135,7 @@ public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterfa
     }
 
     /**
-     * Method to view all bookings for a gym owned by the gym owner.
+     * Method to view all bookings for a gym owned by the gym owner.ß
      * Allows gym owners to view the bookings made for their gym center.
      *
      * @param ownerId The ID of the gym owner whose bookings are being viewed.

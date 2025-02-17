@@ -1,6 +1,6 @@
 package com.flipkart.dao.FlipFitAdmin;
 
-import com.flipkart.bean.FlipFitGymOwner;
+import com.flipkart.bean.FlipFitGymCenter;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ public interface FlipFitAdminInterface {
      *
      * @return List of pending gym owner requests.
      */
-    List<FlipFitGymOwner> getPendingGymOwnerRequests();
+    List<FlipFitGymCenter> getPendingGymCenterRequests();
 
     /**
      * Approves a gym owner by their ID.
@@ -21,7 +21,7 @@ public interface FlipFitAdminInterface {
      * @param ownerId The ID of the gym owner to approve.
      * @return true if the owner was successfully approved, false otherwise.
      */
-    boolean approveGymOwner(int ownerId);
+    boolean approveGymCenter(int ownerId);
 
     /**
      * Rejects a gym owner by their ID, deleting their gym(s) and the owner record.
@@ -29,7 +29,7 @@ public interface FlipFitAdminInterface {
      * @param ownerId The ID of the gym owner to reject.
      * @return true if the owner was successfully rejected, false otherwise.
      */
-    boolean rejectGymOwner(int ownerId);
+    boolean rejectGymCenter(int ownerId);
 
     /**
      * Retrieves a list of all customers in the system.
