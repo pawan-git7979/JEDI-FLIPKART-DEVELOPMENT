@@ -12,12 +12,17 @@ public class FlipFitAdminMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("\n=== FlipFit Admin Menu ===");
-            System.out.println("1. View & Process Pending Gym  Requests");
-            System.out.println("2. View All Gym Customers");
-            System.out.println("3. View All Gym Owners");
-            System.out.println("4. View All Gym Centers");
-            System.out.println("5. Logout");
+            System.out.println("\n=========================================");
+            System.out.println("|        FlipFit Admin Menu            |");
+            System.out.println("=========================================");
+            System.out.printf("| %-3s | %-30s |\n", "No.", "Option");
+            System.out.println("-----------------------------------------");
+            System.out.printf("| %-3s | %-30s |\n", "1", "View & Process Pending Gym Requests");
+            System.out.printf("| %-3s | %-30s |\n", "2", "View All Gym Customers");
+            System.out.printf("| %-3s | %-30s |\n", "3", "View All Gym Owners");
+            System.out.printf("| %-3s | %-30s |\n", "4", "View All Gym Centers");
+            System.out.printf("| %-3s | %-30s |\n", "5", "Logout");
+            System.out.println("=========================================");
 
             int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
@@ -36,10 +41,10 @@ public class FlipFitAdminMenu {
                     break;
                 case 5:
                     exit = true;
-                    System.out.println("Logging out...");
+                    System.out.println("👋 Logging out...");
                     break;
                 default:
-                    System.out.println("Invalid choice. Try again.");
+                    System.out.println("❌ Invalid choice. Try again.");
             }
         }
     }

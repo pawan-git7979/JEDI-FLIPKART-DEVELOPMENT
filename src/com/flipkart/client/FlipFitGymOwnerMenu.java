@@ -20,12 +20,17 @@ public class FlipFitGymOwnerMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("\n=== FlipFit Gym Owner Menu ===");
-            System.out.println("1. Add a Gym Center");
-            System.out.println("2. Update Gym Information");
-            System.out.println("3. Add or Update a Slot");
-            System.out.println("4. View Bookings");
-            System.out.println("5. Logout");
+            System.out.println("\n==========================================");
+            System.out.println("|         FlipFit Gym Owner Menu         |");
+            System.out.println("==========================================");
+            System.out.printf("| %-3s | %-30s |\n", "No.", "Option");
+            System.out.println("------------------------------------------");
+            System.out.printf("| %-3s | %-30s |\n", "1", "Add a Gym Center");
+            System.out.printf("| %-3s | %-30s |\n", "2", "Update Gym Information");
+            System.out.printf("| %-3s | %-30s |\n", "3", "Add or Update a Slot");
+            System.out.printf("| %-3s | %-30s |\n", "4", "View Bookings");
+            System.out.printf("| %-3s | %-30s |\n", "5", "Logout");
+            System.out.println("==========================================");
 
             int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
@@ -50,7 +55,13 @@ public class FlipFitGymOwnerMenu {
                     if (bookings.isEmpty()) {
                         System.out.println("📌 No bookings found.");
                     } else {
-                        bookings.forEach(System.out::println);
+                        System.out.println("\n===================================");
+                        System.out.println("|        Your Gym Bookings        |");
+                        System.out.println("===================================");
+                        for (String booking : bookings) {
+                            System.out.printf("| %-30s |\n", booking);
+                        }
+                        System.out.println("===================================");
                     }
                     break;
 
@@ -64,4 +75,5 @@ public class FlipFitGymOwnerMenu {
             }
         }
     }
+
 }

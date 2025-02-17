@@ -19,12 +19,17 @@ public class FlipFitCustomerMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("\n=== FlipFit Customer Menu ===");
-            System.out.println("1. Book Slot");
-            System.out.println("2. View Bookings");
-            System.out.println("3. View Payment Info");
-            System.out.println("4. View Notifications");
-            System.out.println("5. Logout");
+            System.out.println("\n=====================================");
+            System.out.println("|         FlipFit Customer Menu      |");
+            System.out.println("=====================================");
+            System.out.printf("| %-3s | %-25s |\n", "No.", "Option");
+            System.out.println("-------------------------------------");
+            System.out.printf("| %-3s | %-25s |\n", "1", "Book Slot");
+            System.out.printf("| %-3s | %-25s |\n", "2", "View Bookings");
+            System.out.printf("| %-3s | %-25s |\n", "3", "View Payment Info");
+            System.out.printf("| %-3s | %-25s |\n", "4", "View Notifications");
+            System.out.printf("| %-3s | %-25s |\n", "5", "Logout");
+            System.out.println("=====================================");
 
             int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
@@ -50,4 +55,5 @@ public class FlipFitCustomerMenu {
             }
         }
     }
+
 }

@@ -15,10 +15,15 @@ public class FlipFitApplicationMenu {
             boolean exit = false;
 
             while (!exit) {
-                System.out.println("\n=== FlipFit Main Menu ===");
-                System.out.println("1. Login");
-                System.out.println("2. Register (Gym Customer / Gym Owner)");
-                System.out.println("3. Exit");
+                System.out.println("\n=========================================");
+                System.out.println("|        FlipFit Main Menu             |");
+                System.out.println("=========================================");
+                System.out.printf("| %-3s | %-30s |\n", "No.", "Option");
+                System.out.println("-----------------------------------------");
+                System.out.printf("| %-3s | %-30s |\n", "1", "Login");
+                System.out.printf("| %-3s | %-30s |\n", "2", "Register (Gym Customer / Gym Owner)");
+                System.out.printf("| %-3s | %-30s |\n", "3", "Exit");
+                System.out.println("=========================================");
 
                 int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
@@ -31,7 +36,7 @@ public class FlipFitApplicationMenu {
                         if (user != null) {
                             navigateToRoleMenu(user, scanner); // Pass entire user object
                         } else {
-                            System.out.println("Invalid credentials. Please try again.");
+                            System.out.println("❌ Invalid credentials. Please try again.");
                         }
                         break;
                     case 2:
@@ -39,10 +44,10 @@ public class FlipFitApplicationMenu {
                         break;
                     case 3:
                         exit = true;
-                        System.out.println("Exiting FlipFit. Goodbye!");
+                        System.out.println("👋 Exiting FlipFit. Goodbye!");
                         break;
                     default:
-                        System.out.println("Invalid choice. Please try again.");
+                        System.out.println("❌ Invalid choice. Please try again.");
                 }
             }
         }
@@ -60,7 +65,7 @@ public class FlipFitApplicationMenu {
                 new FlipFitAdminMenu().showMenu(scanner); // ✅ No userId required for admin
                 break;
             default:
-                System.out.println("Invalid role. Returning to main menu.");
+                System.out.println("❌ Invalid role. Returning to main menu.");
         }
     }
 }
