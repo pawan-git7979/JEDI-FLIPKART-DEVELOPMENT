@@ -10,6 +10,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
+
+    /**
+     * Adds a new gym to the system.
+     *
+     * @param gym The FlipFitGymCenter object containing gym details.
+     * @return true if the gym was added successfully, false otherwise.
+     */
     @Override
     public boolean addGym(FlipFitGymCenter gym) {
         try (Connection conn = FlipFitDBUtil.getConnection();
@@ -24,6 +31,12 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
         return false;
     }
 
+    /**
+     * Updates the details of an existing gym.
+     *
+     * @param gym The FlipFitGymCenter object containing updated gym details.
+     * @return true if the gym details were updated successfully, false otherwise.
+     */
     @Override
     public boolean updateGymDetails(FlipFitGymCenter gym) {
         try (Connection conn = FlipFitDBUtil.getConnection();
@@ -38,6 +51,11 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
         return false;
     }
 
+    /**
+     * Retrieves a list of all gyms in the system.
+     *
+     * @return A list of FlipFitGymCenter objects representing all gyms.
+     */
     @Override
     public List<FlipFitGymCenter> getAllGyms() {
         List<FlipFitGymCenter> gyms = new ArrayList<>();
@@ -54,8 +72,9 @@ public class FlipFitGymCenterImpl implements FlipFitGymCenterInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        // Sorting the gyms by their name
         return gyms.stream()
-                .sorted(Comparator.comparing(FlipFitGymCenter::getName)) // ✅ Sort by gym name
+                .sorted(Comparator.comparing(FlipFitGymCenter::getName))
                 .collect(Collectors.toList());
     }
 }

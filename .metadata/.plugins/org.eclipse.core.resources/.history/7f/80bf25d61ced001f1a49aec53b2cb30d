@@ -245,7 +245,7 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
                 .collect(Collectors.toList());
     }
 
-
+<<<<<<< HEAD
 
 
     @Override
@@ -261,13 +261,14 @@ public class FlipFitCustomerImpl implements FlipFitCustomerInterface {
         }
         return false;
     }
-
+=======
     /**
      * Retrieves a list of payments made by a specific user.
      *
      * @param userId The ID of the user whose payments are to be retrieved.
      * @return A list of FlipFitPayment objects representing the user's payments.
      */
+>>>>>>> 10702c3444c677f00b806dc12b20ee94fe339602
     @Override
     public List<FlipFitPayment> getUserPayments(int userId) {
         List<FlipFitPayment> payments = new ArrayList<>();
