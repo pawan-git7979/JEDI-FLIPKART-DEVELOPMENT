@@ -18,7 +18,7 @@ public class LoginIO {
                 FlipFitGymCustomerMenu.showMenu(username);
                 break;
             case 2:
-                FlipFitGymOwnerMenu.showMenu(username);
+               // FlipFitGymOwnerMenu.showMenu(username);
                 break;
             case 3:
                 FlipFitGymAdminMenu.showMenu(username);

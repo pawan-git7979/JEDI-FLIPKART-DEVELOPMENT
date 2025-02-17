@@ -1,0 +1,54 @@
+package com.flipkart.dao.FlipFitAdmin;
+
+import com.flipkart.bean.FlipFitGymOwner;
+import java.util.List;
+
+/**
+ * Interface for operations related to FlipFitAdmin functionalities such as managing gym owners, customers, and gyms.
+ */
+public interface FlipFitAdminInterface {
+
+    /**
+     * Retrieves a list of gym owners who have pending approval requests.
+     *
+     * @return List of pending gym owner requests.
+     */
+    List<FlipFitGymOwner> getPendingGymOwnerRequests();
+
+    /**
+     * Approves a gym owner by their ID.
+     *
+     * @param ownerId The ID of the gym owner to approve.
+     * @return true if the owner was successfully approved, false otherwise.
+     */
+    boolean approveGymOwner(int ownerId);
+
+    /**
+     * Rejects a gym owner by their ID, deleting their gym(s) and the owner record.
+     *
+     * @param ownerId The ID of the gym owner to reject.
+     * @return true if the owner was successfully rejected, false otherwise.
+     */
+    boolean rejectGymOwner(int ownerId);
+
+    /**
+     * Retrieves a list of all customers in the system.
+     *
+     * @return A sorted list of customer names and emails.
+     */
+    List<String> getAllCustomers();
+
+    /**
+     * Retrieves a list of all approved gym owners in the system.
+     *
+     * @return A sorted list of gym owners' names and emails.
+     */
+    List<String> getAllOwners();
+
+    /**
+     * Retrieves a list of all gyms in the system.
+     *
+     * @return A sorted list of gym names and their locations.
+     */
+    List<String> getAllGyms();
+}

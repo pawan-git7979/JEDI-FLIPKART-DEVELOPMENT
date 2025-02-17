@@ -1,0 +1,96 @@
+package com.flipkart.business;
+
+import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerInterface;
+import com.flipkart.dao.FlipFitCustomer.FlipFitCustomerImpl;
+import com.flipkart.bean.FlipFitBooking;
+import com.flipkart.bean.FlipFitPayment;
+import com.flipkart.bean.FlipFitNotification;
+import com.flipkart.utils.FlipFitIOUtils;
+import com.flipkart.bean.FlipFitGymCenter;
+import com.flipkart.bean.FlipFitGymSlot;
+import com.flipkart.exception.CustomerException;
+import java.util.List;
+import java.util.Scanner;
+
+public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterface {
+    private FlipFitCustomerInterface customerDAO = new FlipFitCustomerImpl();
+    private FlipFitPaymentServiceInterface paymentService = new FlipFitPaymentServiceImpl();
+
+  
+    public void viewBookings(int userId, Scanner scanner) {
+        try {
+            List<FlipFitBooking> bookings = customerDAO.getUserBookings(userId);
+            if (bookings.isEmpty()) {
+                throw new CustomerException("No bookings found.");
+            }
+
+            System.out.println("\n=== Your Bookings ===");
+            for (int i = 0; i < bookings.size(); i++) {
+                FlipFitBooking booking = bookings.get(i);
+                System.out.printf("| %-3d | Booking ID: %-5d | Gym ID: %-5d | Slot ID: %-5d | Status: %-10s |\n",
+                        (i + 1), booking.getBookingId(), booking.getCenterId(), booking.getSlotId(), booking.getStatus());
+            }
+            System.out.println("=========================================");
+            System.out.println("Press 0 to go back, or select a booking to delete (1-" + bookings.size() + "): ");
+            
+            int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
+            if (choice == 0) {
+                return;
+            }
+
+            if (choice < 1 || choice > bookings.size()) {
+                throw new CustomerException("Invalid choice. Please try again.");
+            }
+
+            FlipFitBooking selectedBooking = bookings.get(choice - 1);
+            boolean isDeleted = customerDAO.deleteBooking(selectedBooking.getBookingId());
+
+            if (isDeleted) {
+                System.out.println("✅ Booking ID " + selectedBooking.getBookingId() + " has been successfully deleted.");
+            } else {
+                System.out.println("❌ Failed to delete booking. Please try again.");
+            }
+        } catch (CustomerException e) {
+            System.out.println("⚠️ Error: " + e.getMessage());
+        }
+    }
+}
+    @Override
+    public void viewPayments(int userId) {
+        try {
+            List<FlipFitPayment> payments = customerDAO.getUserPayments(userId);
+            if (payments.isEmpty()) {
+                throw new CustomerException("No payment records found.");
+            }
+
+            System.out.println("\n=== Payment History ===");
+            payments.forEach(payment -> {
+                System.out.println("Payment ID: " + payment.getPaymentId());
+                System.out.println("Amount: ₹" + payment.getAmount());
+                System.out.println("Status: " + payment.getStatus());
+                System.out.println("---------------------------");
+            });
+        } catch (CustomerException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void viewNotifications(int userId) {
+        try {
+            List<FlipFitNotification> notifications = customerDAO.getUserNotifications(userId);
+            if (notifications.isEmpty()) {
+                throw new CustomerException("No notifications found.");
+            }
+
+            System.out.println("\n=== Notifications ===");
+            notifications.forEach(notification -> {
+                System.out.println("Message: " + notification.getMessage());
+                System.out.println("Status: " + notification.getStatus());
+                System.out.println("---------------------------");
+            });
+        } catch (CustomerException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}

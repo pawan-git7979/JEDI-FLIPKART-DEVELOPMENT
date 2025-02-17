@@ -1,0 +1,16 @@
+com.flipkart.bean
+com.flipkart.business
+com.flipkart.client
+com.flipkart.constant
+com.flipkart.dao.FlipFitAdmin
+com.flipkart.dao.FlipFitBooking
+com.flipkart.dao.FlipFitCustomer
+com.flipkart.dao.FlipFitGymCenter
+com.flipkart.dao.FlipFitGymOwner
+com.flipkart.dao.FlipFitPayment
+com.flipkart.dao.FlipFitUser
+com.flipkart.datasource
+com.flipkart.exception
+com.flipkart.helper
+com.flipkart.io
+com.flipkart.utils
