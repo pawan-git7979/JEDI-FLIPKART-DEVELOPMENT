@@ -82,8 +82,6 @@ public class SQLQueries {
         FROM FlipFitGymCenter
         WHERE status = 'APPROVED'
     """;
-    public static final String ADD_GYM_CENTER =
-            "INSERT INTO FlipFitGymCenter (name, location, ownerId, adminId) VALUES (?, ?, ?, ?)";
 
     // FlipFitBooking Queries
     /**

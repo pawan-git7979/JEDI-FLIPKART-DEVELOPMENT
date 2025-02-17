@@ -20,12 +20,14 @@ public class SQLQueries {
         JOIN FlipFitUser u ON o.ownerId = u.userId
         WHERE gc.status = 'PENDING'
     """;
-
+<<<<<<< HEAD
+    
+=======
 
     /**
      * SQL query to approve a gym owner's request.
      */
-
+>>>>>>> 10702c3444c677f00b806dc12b20ee94fe339602
     public static final String APPROVE_GYM_OWNER =
             "UPDATE FlipFitGymCenter SET status = 'APPROVED' WHERE ownerId = ?";
 
@@ -64,10 +66,6 @@ public class SQLQueries {
         )
     """;
 
-    // FlipFitBooking Queries
-    public static final String VIEW_BOOKINGS =
-            "SELECT * FROM FlipFitBooking WHERE centerId IN (SELECT gymId FROM FlipFitGymCenter WHERE ownerId = ?)";
-
     /**
      * SQL query to fetch gym names by owner ID.
      */
@@ -82,8 +80,6 @@ public class SQLQueries {
         FROM FlipFitGymCenter
         WHERE status = 'APPROVED'
     """;
-    public static final String ADD_GYM_CENTER =
-            "INSERT INTO FlipFitGymCenter (name, location, ownerId, adminId) VALUES (?, ?, ?, ?)";
 
     // FlipFitBooking Queries
     /**

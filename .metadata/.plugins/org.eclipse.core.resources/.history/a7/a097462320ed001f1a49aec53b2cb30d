@@ -71,9 +71,11 @@ public class FlipFitCustomerMenu {
                     customerService.bookSlot(scanner, userId); // Call service to book a slot
                     break;
                 case 2:
-
+<<<<<<< HEAD
                     customerService.viewBookings(userId,scanner);
-
+=======
+                    customerService.viewBookings(userId); // Call service to view bookings
+>>>>>>> 10702c3444c677f00b806dc12b20ee94fe339602
                     break;
                 case 3:
                     customerService.viewPayments(userId); // Call service to view payment info

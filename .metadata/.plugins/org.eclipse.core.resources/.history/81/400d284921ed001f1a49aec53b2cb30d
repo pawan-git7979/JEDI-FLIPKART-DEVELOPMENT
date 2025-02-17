@@ -64,10 +64,6 @@ public class SQLQueries {
         )
     """;
 
-    // FlipFitBooking Queries
-    public static final String VIEW_BOOKINGS =
-            "SELECT * FROM FlipFitBooking WHERE centerId IN (SELECT gymId FROM FlipFitGymCenter WHERE ownerId = ?)";
-
     /**
      * SQL query to fetch gym names by owner ID.
      */
@@ -82,8 +78,6 @@ public class SQLQueries {
         FROM FlipFitGymCenter
         WHERE status = 'APPROVED'
     """;
-    public static final String ADD_GYM_CENTER =
-            "INSERT INTO FlipFitGymCenter (name, location, ownerId, adminId) VALUES (?, ?, ?, ?)";
 
     // FlipFitBooking Queries
     /**
