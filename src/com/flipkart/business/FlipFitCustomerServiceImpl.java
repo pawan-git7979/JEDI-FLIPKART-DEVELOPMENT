@@ -9,6 +9,8 @@ import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.bean.FlipFitGymCenter;
 import com.flipkart.bean.FlipFitGymSlot;
 import com.flipkart.exception.CustomerException;
+
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Scanner;
 
@@ -170,6 +172,7 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
      */
     @Override
     public void viewNotifications(int userId) {
+
         try {
             // Fetch user's notifications
             List<FlipFitNotification> notifications = customerDAO.getUserNotifications(userId);
@@ -186,5 +189,18 @@ public class FlipFitCustomerServiceImpl implements FlipFitCustomerServiceInterfa
         } catch (CustomerException e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public static void main(String[] args) {
+        Hashtable ht = new Hashtable<String, String>(); // Error 1: Incorrect instantiation
+
+        ht.put("chec", "check");
+        ht.put(1000, "check"); // Error 2: Inserting Integer key into Hashtable<String, String>
+        ht.put("check", 20.01); // Error 3: Inserting Double into Hashtable<String, String>
+
+        System.out.print(ht.get("chec") + "");
+        System.out.print(ht.get(1000) + ""); // Error 4: Inconsistent key types
+
+        System.out.print(ht.get("check"));
     }
 }
