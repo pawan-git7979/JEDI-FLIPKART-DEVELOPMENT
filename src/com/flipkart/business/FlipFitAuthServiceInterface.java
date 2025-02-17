@@ -1,6 +1,8 @@
 package com.flipkart.business;
 
 import com.flipkart.bean.FlipFitUser;
+import com.flipkart.exception.AuthException;
+
 import java.util.Scanner;
 
 public interface FlipFitAuthServiceInterface {

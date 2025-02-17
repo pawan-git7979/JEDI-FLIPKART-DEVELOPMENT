@@ -5,6 +5,7 @@ import com.flipkart.dao.FlipFitAdmin.FlipFitAdminImpl;
 import com.flipkart.bean.FlipFitGymOwner;
 import java.util.List;
 import java.util.Scanner;
+import com.flipkart.exception.AdminException;
 
 public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
     private FlipFitAdminInterface adminDAO = new FlipFitAdminImpl();
@@ -18,27 +19,31 @@ public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
             return;
         }
 
-        for (FlipFitGymOwner owner : pendingOwners) {
+        pendingOwners.forEach(owner -> {
             System.out.println("Owner ID: " + owner.getUserId() + " | Name: " + owner.getName());
             System.out.println("Approve (A) or Reject (R)? ");
             String decision = scanner.next().trim().toUpperCase();
 
-            if (decision.equals("A")) {
-                if (adminDAO.approveGymOwner(owner.getUserId())) {
+            try {
+                if (decision.equals("A")) {
+                    if (!adminDAO.approveGymOwner(owner.getUserId())) {
+                        throw new AdminException("Error approving owner with ID: " + owner.getUserId());
+                    }
                     System.out.println("Gym Owner Approved.");
-                } else {
-                    System.out.println("Error approving owner.");
-                }
-            } else if (decision.equals("R")) {
-                if (adminDAO.rejectGymOwner(owner.getUserId())) {
+                } else if (decision.equals("R")) {
+                    if (!adminDAO.rejectGymOwner(owner.getUserId())) {
+                        throw new AdminException("Error rejecting owner with ID: " + owner.getUserId());
+                    }
                     System.out.println("Gym Owner Rejected.");
                 } else {
-                    System.out.println("Error rejecting owner.");
+                    System.out.println("Invalid input. Skipping this request.");
                 }
-            } else {
-                System.out.println("Invalid input. Skipping this request.");
+            } catch (AdminException e) {
+                // Handle exception, e.g., log it, show a more user-friendly message, etc.
+                System.out.println(e.getMessage());
             }
-        }
+        });
+
     }
 
     @Override
@@ -49,9 +54,8 @@ public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
             return;
         }
 
-        for (String customer : customers) {
-            System.out.println(customer);
-        }
+        customers.forEach(System.out::println);
+
     }
 
     @Override
@@ -62,9 +66,7 @@ public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
             return;
         }
 
-        for (String owner : owners) {
-            System.out.println(owner);
-        }
+        owners.forEach(System.out::println);
     }
 
     @Override
@@ -75,8 +77,6 @@ public class FlipFitAdminServiceImpl implements FlipFitAdminServiceInterface {
             return;
         }
 
-        for (String gym : gyms) {
-            System.out.println(gym);
-        }
+        gyms.forEach(System.out::println);
     }
 }

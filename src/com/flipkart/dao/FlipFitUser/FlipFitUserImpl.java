@@ -34,7 +34,6 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
 
                 int affectedRows = userStmt.executeUpdate();
                 if (affectedRows == 0) {
-                    System.out.println("❌ ERROR: User insertion failed!");
                     return false;
                 }
 
