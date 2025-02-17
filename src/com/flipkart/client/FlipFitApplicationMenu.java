@@ -56,13 +56,16 @@ public class FlipFitApplicationMenu {
     private static void navigateToRoleMenu(FlipFitUser user, Scanner scanner) {
         switch (user.getRole().toUpperCase()) {
             case FlipFitUser.ROLE_CUSTOMER:
-                new FlipFitCustomerMenu(user.getUserId()).showMenu(scanner); // ✅ Now works correctly
+                String customerName=user.getName();
+                new FlipFitCustomerMenu(user.getUserId(), customerName).showMenu(scanner); // ✅ Now works correctly
                 break;
             case FlipFitUser.ROLE_OWNER:
-                new FlipFitGymOwnerMenu(user.getUserId()).showMenu(scanner); // ✅ Fixed for OwnerMenu
+                String ownerName=user.getName();
+                new FlipFitGymOwnerMenu(user.getUserId(), ownerName).showMenu(scanner); // ✅ Fixed for OwnerMenu
                 break;
             case FlipFitUser.ROLE_ADMIN:
-                new FlipFitAdminMenu().showMenu(scanner); // ✅ No userId required for admin
+                String AdminName=user.getName();
+                new FlipFitAdminMenu().showMenu(scanner, AdminName); // ✅ No userId required for admin
                 break;
             default:
                 System.out.println("❌ Invalid role. Returning to main menu.");

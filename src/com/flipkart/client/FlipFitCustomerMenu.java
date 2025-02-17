@@ -5,22 +5,33 @@ import java.util.Scanner;
 import com.flipkart.business.FlipFitCustomerServiceImpl;
 import com.flipkart.business.FlipFitCustomerServiceInterface;
 import com.flipkart.utils.FlipFitIOUtils;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FlipFitCustomerMenu {
     private FlipFitCustomerServiceInterface customerService;
     private int userId;
+    private String customerName;
 
-        public FlipFitCustomerMenu(int userId) { // ✅ Constructor initializes userId
-            this.customerService = new FlipFitCustomerServiceImpl(); // ✅ Use interface for loose coupling
-            this.userId = userId;
-        }
+    public FlipFitCustomerMenu(int userId, String customerName) {
+        this.customerService = new FlipFitCustomerServiceImpl(); // ✅ Use interface for loose coupling
+        this.userId = userId;
+        this.customerName = customerName;
+    }
 
     public void showMenu(Scanner scanner) { // ✅ Instance method, no static
         boolean exit = false;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy 'at' h:mm a");
 
         while (!exit) {
+            LocalDateTime now = LocalDateTime.now();
+            String formattedNow = now.format(formatter);
+
             System.out.println("\n=====================================");
             System.out.println("|         FlipFit Customer Menu      |");
+            System.out.println("=====================================");
+            System.out.println("| Welcome, " + customerName + "!                |");
+            System.out.println("| Current Date and Time: " + formattedNow + " |");
             System.out.println("=====================================");
             System.out.printf("| %-3s | %-25s |\n", "No.", "Option");
             System.out.println("-------------------------------------");
@@ -55,5 +66,4 @@ public class FlipFitCustomerMenu {
             }
         }
     }
-
 }

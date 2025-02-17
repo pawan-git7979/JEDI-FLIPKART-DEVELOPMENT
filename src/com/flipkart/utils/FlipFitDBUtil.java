@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class FlipFitDBUtil {
     private static final String URL = "jdbc:mysql://localhost:3306/FlipFitSchema?useSSL=false";
     private static final String USER = "root";
-    private static final String PASSWORD = "Wh@t,b@lk,p@ll"; // Update with your MySQL password
+    private static final String PASSWORD = "kafka@1202"; // Update with your MySQL password
 
     // Load the MySQL JDBC Driver when the class is loaded.
     static {

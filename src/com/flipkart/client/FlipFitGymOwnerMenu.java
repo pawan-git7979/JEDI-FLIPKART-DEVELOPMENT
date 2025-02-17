@@ -6,22 +6,33 @@ import java.util.Scanner;
 import com.flipkart.business.FlipFitGymOwnerServiceImpl;
 import com.flipkart.business.FlipFitGymOwnerServiceInterface;
 import com.flipkart.utils.FlipFitIOUtils;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FlipFitGymOwnerMenu {
     private FlipFitGymOwnerServiceInterface ownerService;
     private int userId;
+    private String ownerName;
 
-    public FlipFitGymOwnerMenu(int userId) {
+    public FlipFitGymOwnerMenu(int userId, String ownerName) {
         this.ownerService = new FlipFitGymOwnerServiceImpl();
         this.userId = userId;
+        this.ownerName = ownerName;
     }
 
     public void showMenu(Scanner scanner) {
         boolean exit = false;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy 'at' h:mm a");
 
         while (!exit) {
+            LocalDateTime now = LocalDateTime.now();
+            String formattedNow = now.format(formatter);
+
             System.out.println("\n==========================================");
             System.out.println("|         FlipFit Gym Owner Menu         |");
+            System.out.println("==========================================");
+            System.out.println("| Welcome, " + ownerName + "!                     |");
+            System.out.println("| Current Date and Time: " + formattedNow + " |");
             System.out.println("==========================================");
             System.out.printf("| %-3s | %-30s |\n", "No.", "Option");
             System.out.println("------------------------------------------");
@@ -75,5 +86,4 @@ public class FlipFitGymOwnerMenu {
             }
         }
     }
-
 }

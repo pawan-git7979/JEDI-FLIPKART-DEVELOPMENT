@@ -1,5 +1,7 @@
 package com.flipkart.client;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import com.flipkart.business.FlipFitAdminServiceInterface;
@@ -7,23 +9,27 @@ import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.business.FlipFitAdminServiceImpl;
 
 public class FlipFitAdminMenu {
-    public void showMenu(Scanner scanner) {
+    public void showMenu(Scanner scanner, String AdminName) {
         FlipFitAdminServiceInterface adminService = new FlipFitAdminServiceImpl();
         boolean exit = false;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
         while (!exit) {
-            System.out.println("\n=========================================");
-            System.out.println("|        FlipFit Admin Menu            |");
-            System.out.println("=========================================");
-            System.out.printf("| %-3s | %-30s |\n", "No.", "Option");
-            System.out.println("-----------------------------------------");
-            System.out.printf("| %-3s | %-30s |\n", "1", "View & Process Pending Gym Requests");
-            System.out.printf("| %-3s | %-30s |\n", "2", "View All Gym Customers");
-            System.out.printf("| %-3s | %-30s |\n", "3", "View All Gym Owners");
-            System.out.printf("| %-3s | %-30s |\n", "4", "View All Gym Centers");
-            System.out.printf("| %-3s | %-30s |\n", "5", "Logout");
-            System.out.println("=========================================");
-
+            LocalDateTime now = LocalDateTime.now();
+            System.out.println("\n  ==============================================");
+            System.out.println("  |        Welcome to FlipFit Admin Menu       |");
+            System.out.println("  ==============================================");
+            System.out.println("  | Welcome, " + AdminName + "!                          |");
+            System.out.println("  | Current Date and Time: " + now.format(DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy 'at' h:mm a")) + " |");
+            System.out.println("  ==============================================");
+            System.out.printf("  | %-3s | %-40s |\n", "No.", "Option");
+            System.out.println("  ----------------------------------------------");
+            System.out.printf("  | %-3s | %-40s |\n", "1", "View & Process Pending Gym Requests");
+            System.out.printf("  | %-3s | %-40s |\n", "2", "View All Gym Customers");
+            System.out.printf("  | %-3s | %-40s |\n", "3", "View All Gym Owners");
+            System.out.printf("  | %-3s | %-40s |\n", "4", "View All Gym Centers");
+            System.out.printf("  | %-3s | %-40s |\n", "5", "Logout");
+            System.out.println("  ==============================================");
             int choice = FlipFitIOUtils.getIntInput("Enter your choice: ", scanner);
 
             switch (choice) {
