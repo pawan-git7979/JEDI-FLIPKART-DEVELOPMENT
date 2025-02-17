@@ -1,4 +1,5 @@
 package com.flipkart.dao.FlipFitUser;
+
 import java.util.Scanner;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -17,9 +18,19 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Implementation of FlipFitUserInterface which handles user-related operations
+ * such as adding users, retrieving user details, updating and deleting users.
+ */
 public class FlipFitUserImpl implements FlipFitUserInterface {
     private Scanner scanner = new Scanner(System.in); // Define scanner once
 
+    /**
+     * Adds a new user to the system and registers the user based on their role (Customer or Owner).
+     *
+     * @param user The FlipFitUser object containing user details.
+     * @return true if the user was added successfully, false otherwise.
+     */
     public boolean addUser(FlipFitUser user) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
             conn.setAutoCommit(false); // Start transaction
@@ -105,106 +116,132 @@ public class FlipFitUserImpl implements FlipFitUserInterface {
         }
     }
 
-
+    /**
+     * Retrieves a user by their ID.
+     *
+     * @param userId The ID of the user to be retrieved.
+     * @return The FlipFitUser object corresponding to the user ID, or null if not found.
+     */
     @Override
-public FlipFitUser getUserById(int userId) {
-    FlipFitUser user = null;
-    try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = SQLQueries.GET_USER_BY_ID;
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setInt(1, userId);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            user = new FlipFitUser(
-                    rs.getInt("userId"),
-                    rs.getString("name"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getString("role"),
-                    rs.getString("address")
-            );
+    public FlipFitUser getUserById(int userId) {
+        FlipFitUser user = null;
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
+            String query = SQLQueries.GET_USER_BY_ID;
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                user = new FlipFitUser(
+                        rs.getInt("userId"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("role"),
+                        rs.getString("address")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        e.printStackTrace();
+        return user;
     }
-    return user;
-}
 
-@Override
-public FlipFitUser getUserByEmail(String email) {
-    FlipFitUser user = null;
-    try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query =SQLQueries.GET_USER_BY_EMAIL;
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, email);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            user = new FlipFitUser(
-                    rs.getInt("userId"),
-                    rs.getString("name"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getString("role"),
-                    rs.getString("address")
-            );
+    /**
+     * Retrieves a user by their email.
+     *
+     * @param email The email of the user to be retrieved.
+     * @return The FlipFitUser object corresponding to the email, or null if not found.
+     */
+    @Override
+    public FlipFitUser getUserByEmail(String email) {
+        FlipFitUser user = null;
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
+            String query = SQLQueries.GET_USER_BY_EMAIL;
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                user = new FlipFitUser(
+                        rs.getInt("userId"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("role"),
+                        rs.getString("address")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        e.printStackTrace();
+        return user;
     }
-    return user;
-}
 
-@Override
-public List<FlipFitUser> getAllUsers() {
-    List<FlipFitUser> users = new ArrayList<>();
-    try (Connection conn = FlipFitDBUtil.getConnection()) {
+    /**
+     * Retrieves a list of all users in the system.
+     *
+     * @return A list of all FlipFitUser objects sorted by name.
+     */
+    @Override
+    public List<FlipFitUser> getAllUsers() {
+        List<FlipFitUser> users = new ArrayList<>();
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
             String query = SQLQueries.GET_ALL_USERS;
-        PreparedStatement stmt = conn.prepareStatement(query);
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            users.add(new FlipFitUser(
-                    rs.getInt("userId"),
-                    rs.getString("name"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                    rs.getString("role"),
-                    rs.getString("address")
-            ));
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                users.add(new FlipFitUser(
+                        rs.getInt("userId"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("role"),
+                        rs.getString("address")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        e.printStackTrace();
+        return users.stream()
+                .sorted(Comparator.comparing(FlipFitUser::getName)) // Sort by user name
+                .collect(Collectors.toList());
     }
-    return users.stream()
-            .sorted(Comparator.comparing(FlipFitUser::getName)) // ✅ Sort by gym name
-            .collect(Collectors.toList());
-}
 
-@Override
-public void updateUser(FlipFitUser user) {
-    try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = SQLQueries.UPDATE_USER;
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setString(1, user.getName());
-        stmt.setString(2, user.getEmail());
-        stmt.setString(3, user.getPassword());
-        stmt.setString(4, user.getRole());
-        stmt.setString(5, user.getAddress());
-        stmt.setInt(6, user.getUserId());
-        stmt.executeUpdate();
-    } catch (Exception e) {
-        e.printStackTrace();
+    /**
+     * Updates the details of a user.
+     *
+     * @param user The FlipFitUser object containing the updated user details.
+     */
+    @Override
+    public void updateUser(FlipFitUser user) {
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
+            String query = SQLQueries.UPDATE_USER;
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getRole());
+            stmt.setString(5, user.getAddress());
+            stmt.setInt(6, user.getUserId());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 
-@Override
-public void deleteUser(int userId) {
-    try (Connection conn = FlipFitDBUtil.getConnection()) {
-        String query = SQLQueries.DELETE_USER;
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setInt(1, userId);
-        stmt.executeUpdate();
-    } catch (Exception e) {
-        e.printStackTrace();
+    /**
+     * Deletes a user by their ID.
+     *
+     * @param userId The ID of the user to be deleted.
+     */
+    @Override
+    public void deleteUser(int userId) {
+        try (Connection conn = FlipFitDBUtil.getConnection()) {
+            String query = SQLQueries.DELETE_USER;
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, userId);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 }

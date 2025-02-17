@@ -10,7 +10,12 @@ import java.util.List;
 
 public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
 
-
+    /**
+     * Registers a new gym owner in the system.
+     *
+     * @param owner The FlipFitGymOwner object containing the details of the owner to be registered.
+     * @return true if the owner is successfully registered, false otherwise.
+     */
     public boolean registerGymOwner(FlipFitGymOwner owner) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
             String insertQuery = SQLQueries.REGISTER_GYM_OWNER; // ownerId is the foreign key referencing userId
@@ -29,7 +34,12 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         }
     }
 
-
+    /**
+     * Retrieves the details of a gym owner by their ownerId.
+     *
+     * @param ownerId The unique identifier of the gym owner.
+     * @return The FlipFitGymOwner object containing the owner's details, or null if not found.
+     */
     @Override
     public FlipFitGymOwner getOwnerById(int ownerId) {
         String query = SQLQueries.GET_OWNER_BY_ID;
@@ -52,7 +62,12 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         return null;
     }
 
-    // ✅ New Method: Implement `updateOwnerDetails()`
+    /**
+     * Updates the details of an existing gym owner.
+     *
+     * @param owner The FlipFitGymOwner object containing the updated details of the owner.
+     * @return true if the update is successful, false otherwise.
+     */
     @Override
     public boolean updateOwnerDetails(FlipFitGymOwner owner) {
         String query = SQLQueries.UPDATE_OWNER_DETAILS;
@@ -70,6 +85,11 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         return false;
     }
 
+    /**
+     * Retrieves a list of all gym owners from the system.
+     *
+     * @return A list of FlipFitGymOwner objects representing all the gym owners.
+     */
     @Override
     public List<FlipFitGymOwner> getAllOwners() {
         List<FlipFitGymOwner> owners = new ArrayList<>();
@@ -93,6 +113,12 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         return owners;
     }
 
+    /**
+     * Adds a new gym center to the system.
+     *
+     * @param gym The FlipFitGymCenter object containing the details of the gym to be added.
+     * @return true if the gym is successfully added, false otherwise.
+     */
     @Override
     public boolean addGymCenter(FlipFitGymCenter gym) {
         String query = SQLQueries.ADD_GYM_CENTER;
@@ -102,7 +128,6 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
             stmt.setString(2, gym.getLocation());
             stmt.setInt(3, gym.getOwnerId());
             stmt.setInt(4, gym.getAdminId());
-//            System.out.println(stmt);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -110,7 +135,12 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         return false;
     }
 
-
+    /**
+     * Updates the details of an existing gym center.
+     *
+     * @param gym The FlipFitGymCenter object containing the updated details of the gym.
+     * @return true if the update is successful, false otherwise.
+     */
     @Override
     public boolean updateGymInfo(FlipFitGymCenter gym) {
         String query = SQLQueries.UPDATE_GYM_DETAILS;
@@ -126,6 +156,16 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         return false;
     }
 
+    /**
+     * Adds or updates a gym slot in the system.
+     *
+     * @param gymId The ID of the gym where the slot is to be added or updated.
+     * @param startTime The start time of the gym slot.
+     * @param endTime The end time of the gym slot.
+     * @param seats The number of available seats in the slot.
+     * @param price The price for the gym slot.
+     * @return true if the slot is successfully added or updated, false otherwise.
+     */
     @Override
     public boolean addOrUpdateSlot(int gymId, String startTime, String endTime, int seats, int price) {
         String query = SQLQueries.ADD_OR_UPDATE_SLOT;
@@ -146,6 +186,12 @@ public class FlipFitGymOwnerImpl implements FlipFitGymOwnerInterface {
         return false;
     }
 
+    /**
+     * Views the bookings for a specific gym owner.
+     *
+     * @param ownerId The ID of the gym owner whose bookings are to be viewed.
+     * @return A list of booking details in string format (e.g., "Booking ID: X | Status: Y").
+     */
     @Override
     public List<String> viewBookings(int ownerId) {
         List<String> bookings = new ArrayList<>();

@@ -8,9 +8,21 @@ import com.flipkart.dao.FlipFitGymOwner.FlipFitGymOwnerImpl;
 import com.flipkart.utils.FlipFitIOUtils;
 import com.flipkart.exception.GymOwnerException;
 
+/**
+ * Implementation of services for gym owners within the FlipFit system.
+ * This class includes methods for managing gym centers, slots, and bookings.
+ */
 public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterface {
     private FlipFitGymOwnerInterface ownerDAO = new FlipFitGymOwnerImpl();
 
+    /**
+     * Method to add a new gym center.
+     * Allows gym owners to add a gym to the system.
+     *
+     * @param scanner The scanner used to capture user input.
+     * @param ownerId The ID of the gym owner adding the gym.
+     * @return boolean indicating whether the gym was added successfully.
+     */
     @Override
     public boolean addGymCenter(Scanner scanner, int ownerId) {
         try {
@@ -35,6 +47,14 @@ public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterfa
         }
     }
 
+    /**
+     * Method to update gym center information.
+     * Allows gym owners to update their gym's name or location.
+     *
+     * @param scanner The scanner used to capture user input.
+     * @param ownerId The ID of the gym owner updating the gym.
+     * @return boolean indicating whether the gym information was updated successfully.
+     */
     @Override
     public boolean updateGymInfo(Scanner scanner, int ownerId) {
         try {
@@ -60,6 +80,14 @@ public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterfa
         }
     }
 
+    /**
+     * Method to add or update a gym slot.
+     * Allows gym owners to add or update slots for their gym.
+     *
+     * @param scanner The scanner used to capture user input.
+     * @param ownerId The ID of the gym owner adding or updating the slot.
+     * @return boolean indicating whether the slot was added or updated successfully.
+     */
     @Override
     public boolean addOrUpdateSlot(Scanner scanner, int ownerId) {
         try {
@@ -81,6 +109,13 @@ public class FlipFitGymOwnerServiceImpl implements FlipFitGymOwnerServiceInterfa
         }
     }
 
+    /**
+     * Method to view all bookings for a gym owned by the gym owner.
+     * Allows gym owners to view the bookings made for their gym center.
+     *
+     * @param ownerId The ID of the gym owner whose bookings are being viewed.
+     * @return List of bookings for the gym center.
+     */
     @Override
     public List<String> viewBookings(int ownerId) {
         try {

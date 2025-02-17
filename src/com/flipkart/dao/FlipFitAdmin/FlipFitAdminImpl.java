@@ -4,14 +4,21 @@ import com.flipkart.bean.FlipFitGymOwner;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.flipkart.constant.SQLQueries; // ✅ Import query constants
 
+/**
+ * Implementation of FlipFitAdminInterface that handles operations related to gym owners and customers.
+ */
 public class FlipFitAdminImpl implements FlipFitAdminInterface {
 
+    /**
+     * Retrieves a list of gym owners who have pending approval requests.
+     *
+     * @return List of pending gym owner requests.
+     */
     @Override
     public List<FlipFitGymOwner> getPendingGymOwnerRequests() {
         List<FlipFitGymOwner> owners = new ArrayList<>();
@@ -44,6 +51,12 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         return owners;
     }
 
+    /**
+     * Approves a gym owner by updating their status in the database.
+     *
+     * @param ownerId The ID of the gym owner to approve.
+     * @return true if the owner was successfully approved, false otherwise.
+     */
     @Override
     public boolean approveGymOwner(int ownerId) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
@@ -57,6 +70,12 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         }
     }
 
+    /**
+     * Rejects a gym owner by deleting their gym centers and their record from the database.
+     *
+     * @param ownerId The ID of the gym owner to reject.
+     * @return true if the owner was successfully rejected, false otherwise.
+     */
     @Override
     public boolean rejectGymOwner(int ownerId) {
         try (Connection conn = FlipFitDBUtil.getConnection()) {
@@ -75,6 +94,11 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
         }
     }
 
+    /**
+     * Retrieves a list of all customers in the system.
+     *
+     * @return A sorted list of customer names and emails.
+     */
     @Override
     public List<String> getAllCustomers() {
         List<String> customers = new ArrayList<>();
@@ -99,6 +123,11 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves a list of all approved gym owners.
+     *
+     * @return A sorted list of owner names and emails.
+     */
     @Override
     public List<String> getAllOwners() {
         List<String> owners = new ArrayList<>();
@@ -123,6 +152,13 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves the list of gym names associated with a specific gym owner.
+     *
+     * @param ownerId The ID of the gym owner.
+     * @param conn The database connection.
+     * @return A sorted list of gym names owned by the given owner.
+     */
     private List<String> getGymNamesByOwnerId(int ownerId, Connection conn) {
         List<String> gymNames = new ArrayList<>();
 
@@ -152,6 +188,11 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Retrieves a list of all gyms in the system.
+     *
+     * @return A sorted list of gym names and locations.
+     */
     @Override
     public List<String> getAllGyms() {
         List<String> gyms = new ArrayList<>();
@@ -172,7 +213,7 @@ public class FlipFitAdminImpl implements FlipFitAdminInterface {
             e.printStackTrace();
         }
         return gyms.stream()
-        		 .map(String::toUpperCase) 
+                .map(String::toUpperCase)
                 .sorted() // ✅ Sort by gym name
                 .collect(Collectors.toList());
     }

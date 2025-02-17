@@ -5,8 +5,17 @@ import com.flipkart.constant.SQLQueries;
 import com.flipkart.utils.FlipFitDBUtil;
 import java.sql.*;
 
+/**
+ * Implementation of the FlipFitPaymentInterface that handles payment processing and payment details retrieval.
+ */
 public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
 
+    /**
+     * Processes the payment for a user.
+     *
+     * @param payment The FlipFitPayment object containing the payment details to be processed.
+     * @return true if the payment is processed successfully, false otherwise.
+     */
     @Override
     public boolean processPayment(FlipFitPayment payment) {
         String query = SQLQueries.PROCESS_PAYMENT;
@@ -31,6 +40,12 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
         return false;
     }
 
+    /**
+     * Retrieves the payment details for a specific payment ID.
+     *
+     * @param paymentId The ID of the payment whose details need to be fetched.
+     * @return A FlipFitPayment object containing the payment details, or null if no payment is found with the given ID.
+     */
     @Override
     public FlipFitPayment getPaymentDetails(int paymentId) {
         String query = SQLQueries.GET_PAYMENT_DETAILS;
@@ -52,6 +67,14 @@ public class FlipFitPaymentImpl implements FlipFitPaymentInterface {
         }
         return null;
     }
+
+    /**
+     * Sends a notification to a user regarding their booking and payment details.
+     *
+     * @param userId The ID of the user to be notified.
+     * @param bookingId The ID of the booking related to the payment.
+     * @param price The total price of the booking.
+     */
     public void sendNotification(int userId, int bookingId, int price) {
         String message = "Your booking with ID " + bookingId + " has been processed. The total price is $" + price + ".";
         String query = SQLQueries.NOTIFY_USER;
