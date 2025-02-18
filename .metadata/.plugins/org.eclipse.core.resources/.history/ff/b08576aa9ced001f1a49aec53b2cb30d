@@ -27,9 +27,6 @@ public class FlipFitPaymentServiceImpl implements FlipFitPaymentServiceInterface
     public void processPayment(Scanner scanner, int userId, int bookingId, int price) {
         // Displaying the amount to be paid
         System.out.println("Amount to be paid: ₹" + price);
-        if (scanner.hasNextLine()) {
-            scanner.nextLine();
-        }
 
         // Asking the user to confirm if they want to proceed with the payment
         String userInput = FlipFitIOUtils.getStringInput("Proceed to payment? (y/n)",scanner);

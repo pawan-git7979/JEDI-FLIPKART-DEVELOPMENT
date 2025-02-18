@@ -3,8 +3,7 @@ package com.flipkart.business;
 import com.flipkart.bean.FlipFitPayment;
 import com.flipkart.dao.FlipFitPayment.FlipFitPaymentInterface;
 import com.flipkart.dao.FlipFitPayment.FlipFitPaymentImpl;
-import com.flipkart.utils.FlipFitIOUtils;
-
+import com.flipkart.io.FlipFitIO;
 import java.util.Scanner;
 
 /**
@@ -27,12 +26,9 @@ public class FlipFitPaymentServiceImpl implements FlipFitPaymentServiceInterface
     public void processPayment(Scanner scanner, int userId, int bookingId, int price) {
         // Displaying the amount to be paid
         System.out.println("Amount to be paid: ₹" + price);
-        if (scanner.hasNextLine()) {
-            scanner.nextLine();
-        }
 
         // Asking the user to confirm if they want to proceed with the payment
-        String userInput = FlipFitIOUtils.getStringInput("Proceed to payment? (y/n)",scanner);
+        String userInput = FlipFitIO.getStringInput("Proceed to payment? (y/n)");
         if (userInput.equalsIgnoreCase("y")) {
             // Creating a new payment object and setting payment details
             FlipFitPayment payment = new FlipFitPayment();
